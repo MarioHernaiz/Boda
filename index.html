@@ -99,12 +99,13 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* Menú de Navegación Visible y Fijado Arriba */
+        /* MENÚ DE NAVEGACIÓN TOTALMENTE FIJO ARRIBA */
         nav {
             background-color: #2c2a29 !important;
             border-bottom: 2px solid var(--gold);
-            position: sticky;
+            position: fixed; /* Cambiado a fixed para asegurar el bloqueo total */
             top: 0;
+            left: 0;
             z-index: 9999;
             padding: 15px 0;
             width: 100%;
@@ -139,13 +140,14 @@
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Contenedor Principal */
+        /* Contenedor Principal con espacio superior para el menú fijo */
         .main-content {
             flex: 1;
             max-width: 900px;
             margin: 0 auto;
             width: 100%;
             padding: 40px 20px;
+            margin-top: 80px; /* Compensación del menú fijo para que no pise las letras */
             box-sizing: border-box;
         }
 
@@ -358,7 +360,7 @@
 
             <div class="card">
                 <h3>Primeros pasos</h3>
-                <p>Pero los caminos bien cruzados siempre vuelven a encontrarse. A la vuelta de nuestros respectivos viajes, y tras posponer un café más veces de las que nos gustaría admitir, nuestro reencuentro definitivo llegó en septiembre de 2022. Aunque la verdadera prueba de fuego fue en las fiestas de San Mateo, en la que consideramos nuestra primera cita oficial. Salimos de fiesta, lo pasamos increíble y, como broche de oro... ¡Ana le pegó una gripe a Mario que lo dejó encamado un día entero! Dicen que lo que no te mata te hace más fuerte, y a nosotros nos unió todavía más.</p>
+                <p>But paths that are crossed truly always meet again. A la vuelta de nuestros respectivos viajes, y tras posponer un café más veces de las que nos gustaría admitir, nuestro reencuentro definitivo llegó en septiembre de 2022. Aunque la verdadera prueba de fuego fue en las fiestas de San Mateo, en la que consideramos nuestra primera cita oficial. Salimos de fiesta, lo pasamos increíble y, como broche de oro... ¡Ana le pegó una gripe a Mario que lo dejó encamado un día entero! Dicen que lo que no te mata te hace más fuerte, y a nosotros nos unió todavía más.</p>
             </div>
 
             <div class="card">
@@ -368,7 +370,7 @@
             </div>
         </div>
 
-<!-- PÁGINA 3: LA CEREMONIA -->
+        <!-- PÁGINA 3: LA CEREMONIA -->
         <div id="ceremonia" class="page">
             <h2>La ceremonia y la fiesta</h2>
             
@@ -387,40 +389,45 @@
                     
                     <div style="position: relative;">
                         <span style="position: absolute; left: -27px; top: 2px; background: var(--gold); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">Autobuses de Ida</strong>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">Autobuses de ida</strong>
                         <span style="font-size: 0.95rem; color: #555;">Organizaremos dos líneas de autobuses independientes con rumbo al hotel: una desde <strong>Fuenmayor</strong> y otra desde <strong>Peralta</strong>. (Horarios exactos por confirmar).</span>
                     </div>
 
                     <div style="position: relative;">
                         <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">13:00 h — La Ceremonia</strong>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">13:00 h — La ceremonia</strong>
                         <span style="font-size: 0.95rem; color: #555;">Momento del "Sí, quiero" en los jardines del hotel.</span>
                     </div>
 
                     <div style="position: relative;">
                         <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">14:00 h — El Cóctel</strong>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">14:00 h — El cóctel</strong>
                         <span style="font-size: 0.95rem; color: #555;">Un primer brindis con música de fondo, fotos y picoteo.</span>
                     </div>
 
                     <div style="position: relative;">
                         <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">15:30 h — El Banquete</strong>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">15:30 h — El banquete</strong>
                         <span style="font-size: 0.95rem; color: #555;">Nos sentamos a la mesa para disfrutar de la comida y de alguna que otra sorpresa.</span>
                     </div>
 
                     <div style="position: relative;">
                         <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">19:00 h — El Baile y la Fiesta</strong>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">19:00 h — El baile y la fiesta</strong>
                         <span style="font-size: 0.95rem; color: #555;">Apertura de la barra libre y a darlo todo en la pista de baile.</span>
                     </div>
 
                     <div style="position: relative;">
                         <span style="position: absolute; left: -27px; top: 2px; background: var(--gold); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">Autobuses de Vuelta</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Habrá servicio de regreso nocturno con paradas de vuelta en Fuenmayor/Logroño y Peralta respectivamente, distribuidos en diferentes horarios.</span>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">Autobuses de vuelta</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Habrá servicio de regreso nocturno con paradas de vuelta en Fuenmayor y Peralta respectivamente, distribuidos en diferentes horarios. Está todo en el apartado "Más información".</span>
                     </div>
-
+                    
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: -27px; top: 2px; background: var(--gold); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">La fiesta continúa (PENDIENTE DE VALORAR)</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Todos al Bar Dados en Fuenmayor, que la noche es joven.</span>
+                    </div>
                 </div>
             </div>
 
@@ -432,7 +439,7 @@
 
             <div class="card">
                 <h3>Hotel San Camilo</h3>
-                <p>El Hotel San Camilo destaca por sus impresionantes jardines y arboledas, ofreciendo un entorno natural, elegante y tranquilo. Sus espacios exteriores e interiores están perfectamente preparados para acoger cada momento de la celebración, permitiéndonos disfrutar al máximo de la fiesta junto a vosotros en un ambiente mágico y acogedor.</p>
+                <p>El Hotel San Camilo destaca por sus impresionantes jardines y arboledas, offering un entorno natural, elegante y tranquilo. Sus espacios exteriores e interiores están perfectamente preparados para acoger cada momento de la celebración, permitiéndonos disfrutar al máximo de la fiesta junto a vosotros en un ambiente mágico y acogedor.</p>
             </div>
         </div>
 
@@ -462,7 +469,7 @@
                 
                 <p style="font-size: 0.9rem; color: var(--dark-gold);">Titulares: Ana Pagola y Mario Hernaiz</p>
 
-                <!-- SECCIÓN DE CONTACTO AÑADIDA -->
+                <!-- SECCIÓN DE CONTACTO -->
                 <h3>¿Alguna duda o pregunta?</h3>
                 <p>En caso de que necesitéis comunicaros con nosotros para cualquier detalle, aquí nos tenéis disponibles:</p>
                 
@@ -474,7 +481,9 @@
                     <div style="border-left: 1px dashed var(--gold); padding-left: 40px;" class="contact-divider">
                         <strong style="color: var(--dark-gold); display: block; margin-bottom: 5px;">Mario</strong>
                         <span style="font-family: monospace; font-size: 1.1rem;">608 579 955</span>
-            </div>
+                    </div>
+                </div>
+            </div> <!-- Aquí faltaba este cierre en tu código original -->
         </div>
 
         <!-- PÁGINA 6: CONFIRMA TU ASISTENCIA -->
