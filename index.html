@@ -64,7 +64,7 @@
         /* El Cartel con textura de Madera Antigua */
         .party-sign {
             background-color: #3d2a1d;
-            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); /* Textura de vetas de madera */
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
             border: 6px solid #271a11;
             outline: 2px solid var(--gold);
             outline-offset: -12px;
@@ -73,14 +73,14 @@
             width: 100%;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 50px rgba(0,0,0,0.6);
-            transform: rotate(-1.5deg); /* Ligera inclinación de cartel colgado */
+            transform: rotate(-1.5deg);
             border-radius: 4px;
         }
 
         /* TIPOGRAFÍA ESTILO PARTY BUSINESS (ANIRON) */
         .party-sign h2 {
             font-family: 'Aniron', 'Cinzel', serif;
-            color: #d1b47d; /* Oro viejo para que resalte sobre la madera */
+            color: #d1b47d;
             font-size: 2.1rem;
             margin: 0 0 15px 0;
             border-bottom: 2px dashed rgba(209, 180, 125, 0.4);
@@ -193,6 +193,16 @@
             border-right: 3px solid var(--gold);
             font-size: 1.25rem;
             line-height: 1.6;
+        }
+
+        .welcome-container {
+            max-width: 600px;
+            margin: 40px auto 20px auto;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--charcoal);
+            border-top: 1px dashed rgba(197, 160, 89, 0.4);
+            padding-top: 30px;
         }
 
         /* Contador */
@@ -328,6 +338,9 @@
                     <div class="time-box"><div class="time-number" id="hours">00</div><div class="time-label">Horas</div></div>
                     <div class="time-box"><div class="time-number" id="minutes">00</div><div class="time-label">Min</div></div>
                     <div class="time-box"><div class="time-number" id="seconds">00</div><div class="time-label">Seg</div></div>
+                </div>
+                
+                <!-- BLOQUE DE INFO -->
                 <div class="welcome-container">
                     <p>¡Bienvenidos a nuestra gran aventura! A lo largo de esta página web encontrarás toda la información necesaria para poder organizar vuestro viaje y disfrutar de esta gran fiesta con nosotros.</p>
                 </div>
@@ -455,5 +468,4 @@
         }, 1000);
     </script>
 </body>
-</html>
 </html>
