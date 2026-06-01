@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ana & Mario - ¡Nos casamos!</title>
     <style>
+        /* IMPORTAMOS LAS FUENTES (INCLUIDA ANIRON/CINZEL PARA EL ESTILO TOLKIEN) */
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Marcellus&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/aniron');
 
         :root {
             --gold: #c5a059;
@@ -34,7 +36,7 @@
             flex-direction: column;
         }
 
-        /* PANTALLA DE INICIO (CARTEL DE BILBO) */
+        /* PANTALLA DE INICIO (CARTEL DE BILBO EN MADERA) */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -47,7 +49,7 @@
             justify-content: center;
             align-items: center;
             z-index: 100000;
-            transition: opacity 1s ease-in-out, visibility 1s;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s;
             opacity: 1;
             visibility: visible;
             padding: 20px;
@@ -59,44 +61,47 @@
             visibility: hidden;
         }
 
-        /* El Cartel de "No Admittance" */
+        /* El Cartel con textura de Madera Antigua */
         .party-sign {
-            background-color: #f1ebd9;
-            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
-            border: 8px double #4a3e2b;
-            padding: 40px 30px;
-            max-width: 500px;
+            background-color: #3d2a1d;
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png'); /* Textura de vetas de madera */
+            border: 6px solid #271a11;
+            outline: 2px solid var(--gold);
+            outline-offset: -12px;
+            padding: 50px 35px;
+            max-width: 550px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transform: rotate(-1deg); /* Un toque ligeramente colgado e informal */
-            border-radius: 2px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 50px rgba(0,0,0,0.6);
+            transform: rotate(-1.5deg); /* Ligera inclinación de cartel colgado */
+            border-radius: 4px;
         }
 
+        /* TIPOGRAFÍA ESTILO PARTY BUSINESS (ANIRON) */
         .party-sign h2 {
-            font-family: 'Cinzel', serif;
-            color: #7a1d1d; /* Rojo oscuro/burdeos muy tolkieniano */
-            font-size: 2.2rem;
+            font-family: 'Aniron', 'Cinzel', serif;
+            color: #d1b47d; /* Oro viejo para que resalte sobre la madera */
+            font-size: 2.1rem;
             margin: 0 0 15px 0;
-            border-bottom: 2px solid #7a1d1d;
-            padding-bottom: 10px;
-            letter-spacing: 1px;
-            font-weight: 700;
+            border-bottom: 2px dashed rgba(209, 180, 125, 0.4);
+            padding-bottom: 15px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         .party-sign p {
-            font-family: 'Cinzel', serif;
-            color: #2c2a29;
-            font-size: 1.2rem;
+            font-family: 'Aniron', 'Cinzel', serif;
+            color: #f4efe2;
+            font-size: 1.1rem;
             margin: 0;
-            letter-spacing: 2px;
-            font-weight: 500;
-            line-height: 1.5;
+            letter-spacing: 3px;
+            line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         /* Menú de Navegación Visible y Fijado Arriba */
         nav {
-            background-color: #2c2a29 !important; /* Forzamos el color oscuro de fondo */
+            background-color: #2c2a29 !important;
             border-bottom: 2px solid var(--gold);
             position: sticky;
             top: 0;
@@ -150,7 +155,7 @@
         }
 
         .page.active {
-            display: block !important; /* Fuerza a mostrar solo la pestaña activa */
+            display: block !important;
             animation: fadeIn 0.4s ease-in-out;
         }
 
@@ -243,7 +248,7 @@
             width: 100%;
             max-width: 640px;
             margin: 0 auto;
-            height: 900px; /* Altura fija para evitar problemas de scroll en móviles */
+            height: 900px;
             border: 1px solid var(--gold);
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             border-radius: 4px;
@@ -288,7 +293,7 @@
 </head>
 <body class="loading">
 
-    <!-- INTRO ANIMADA: CARTEL REGLA DE BILBO -->
+    <!-- INTRO ANIMADA: CARTEL EN MADERA CON TIPOGRAFÍA TOLKIEN -->
     <div id="splash-screen">
         <div class="party-sign">
             <h2>NO ADMITTANCE</h2>
@@ -316,7 +321,7 @@
             <div style="padding: 20px 0; text-align: center;">
                 <h1>ana & mario</h1>
                 <div class="quote-container">
-                    "Prefiero compartir una vida contigo que enfrentarme a todas las edades de este mundo sola."
+                    "Prefiero compartir una vida contigo que enfrentarme a todas las edades de este world sola."
                 </div>
                 <div id="countdown">
                     <div class="time-box"><div class="time-number" id="days">00</div><div class="time-label">Días</div></div>
@@ -395,13 +400,13 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // CONTROLADOR DE DESVANECIMIENTO DEL CARTEL INICIAL (3 SEGUNDOS)
+        // CONFIGURADO EXACTAMENTE A 2.5 SEGUNDOS (2500 MILISEGUNDOS)
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
                 splash.classList.add('fade-out');
                 document.body.classList.remove('loading');
-            }, 3000); // 3000 milisegundos = 3 segundos
+            }, 2500); 
         });
 
         function showPage(pageId) {
