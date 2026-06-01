@@ -26,14 +26,16 @@
             flex-direction: column;
         }
 
-        /* Menú de Navegación */
+        /* Menú de Navegación Visible y Fijado Arriba */
         nav {
-            background-color: rgba(44, 42, 41, 0.95);
+            background-color: #2c2a29 !important; /* Forzamos el color oscuro de fondo */
             border-bottom: 2px solid var(--gold);
             position: sticky;
             top: 0;
-            z-index: 1000;
-            padding: 10px 0;
+            z-index: 9999;
+            padding: 15px 0;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         .nav-container {
@@ -41,28 +43,30 @@
             margin: 0 auto;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
+            padding: 0 10px;
         }
 
         .nav-link {
             font-family: 'Cinzel', serif;
-            color: var(--parchment);
+            color: var(--parchment) !important;
             text-decoration: none;
-            padding: 8px 15px;
+            padding: 8px 14px;
             font-size: 0.9rem;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             cursor: pointer;
-            border-radius: 2px;
+            border: 1px solid transparent;
         }
 
         .nav-link:hover, .nav-link.active {
-            color: var(--gold);
+            color: var(--gold) !important;
+            border: 1px solid var(--gold);
             background-color: rgba(255, 255, 255, 0.05);
         }
 
-        /* Contenedor Principal de Páginas */
+        /* Contenedor Principal */
         .main-content {
             flex: 1;
             max-width: 900px;
@@ -72,36 +76,36 @@
             box-sizing: border-box;
         }
 
-        /* Estilo de las "Subpáginas" */
+        /* Sistema de pestañas */
         .page {
-            display: none; /* Ocultas por defecto */
-            animation: fadeIn 0.5s ease-in-out forwards;
+            display: none; 
         }
 
         .page.active {
-            display: block; /* Solo se muestra la activa */
+            display: block !important; /* Fuerza a mostrar solo la pestaña activa */
+            animation: fadeIn 0.4s ease-in-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Tipografías y Elementos Visuales */
         h1, h2, h3 {
             font-family: 'Cinzel', serif;
             letter-spacing: 2px;
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
+            margin-top: 20px;
             margin-bottom: 10px;
             color: var(--charcoal);
         }
 
         h2 {
             color: var(--dark-gold);
-            font-size: 2rem;
+            font-size: 1.8rem;
             border-bottom: 1px double var(--gold);
             padding-bottom: 10px;
             margin-bottom: 30px;
@@ -114,11 +118,11 @@
             padding: 15px 25px;
             border-left: 3px solid var(--gold);
             border-right: 3px solid var(--gold);
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             line-height: 1.6;
         }
 
-        /* Contador de la Portada */
+        /* Contador */
         #countdown {
             display: flex;
             justify-content: center;
@@ -128,16 +132,16 @@
         }
 
         .time-box {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             padding: 15px 20px;
             border: 1px solid var(--gold);
             min-width: 70px;
             border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
         .time-number {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             font-weight: bold;
             font-family: 'Cinzel', serif;
         }
@@ -149,7 +153,7 @@
             letter-spacing: 1px;
         }
 
-        /* Tarjetas de información */
+        /* Tarjetas */
         .card {
             background: rgba(255, 255, 255, 0.5);
             border: 1px solid var(--gold);
@@ -162,29 +166,28 @@
 
         .card h3 {
             margin-top: 0;
-            color: var(--charcoal);
             border-bottom: 1px dashed var(--gold);
             padding-bottom: 5px;
         }
 
-        /* Formulario Iframe */
+        /* Contenedor del Formulario Iframe */
         .form-container {
-            position: relative;
             width: 100%;
-            padding-top: 120%; /* Ajuste para que se vea bien el Google Form */
+            max-width: 640px;
+            margin: 0 auto;
+            height: 900px; /* Altura fija para evitar problemas de scroll en móviles */
+            border: 1px solid var(--gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .form-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             border: 0;
         }
 
-        /* Botones */
         .btn {
             display: inline-block;
             background-color: var(--charcoal);
@@ -217,8 +220,8 @@
 </head>
 <body>
 
-    <!-- Menú Superior -->
-    <nav>
+    <!-- MENÚ SUPERIOR DE NAVEGACIÓN -->
+    <nav id="navbar">
         <div class="nav-container">
             <span class="nav-link active" onclick="showPage('inicio')">Inicio</span>
             <span class="nav-link" onclick="showPage('nosotros')">Sobre Nosotros</span>
@@ -229,12 +232,12 @@
         </div>
     </nav>
 
-    <!-- Contenido Cambiante -->
+    <!-- CONTENIDO DE LAS SUBPÁGINAS -->
     <div class="main-content">
 
         <!-- PÁGINA 1: INICIO -->
         <div id="inicio" class="page active">
-            <div style="padding: 40px 0;">
+            <div style="padding: 20px 0; text-align: center;">
                 <h1>ana & mario</h1>
                 <div class="quote-container">
                     "Prefiero compartir una vida contigo que enfrentarme a todas las edades de este mundo sola."
@@ -266,7 +269,7 @@
                 <p><strong>Lugar:</strong> Hotel San Camillo, Navarrete (La Rioja)</p>
                 <p><strong>Hora:</strong> 13:00 h</p>
                 <p>Acompañadnos en este enclave tan especial donde uniremos nuestros caminos de manera oficial.</p>
-                <a href="https://maps.google.com" target="_blank" class="btn">Ver mapa en Google Maps</a>
+                <a href="https://maps.google.com/?q=Hotel+San+Camillo+Navarrete" target="_blank" class="btn">Ver mapa en Google Maps</a>
             </div>
         </div>
 
@@ -298,14 +301,13 @@
             </div>
         </div>
 
-        <!-- PÁGINA 6: CONFIRMACIÓN DE ASISTENCIA -->
+        <!-- PÁGINA 6: CONFIRMACIÓN DE ASISTENCIA (GOOGLE FORM ENLAZADO) -->
         <div id="confirmacion" class="page">
             <h2>Confirmación de Asistencia</h2>
-            <p style="margin-bottom: 20px;">Por favor, rellenad el siguiente formulario para confirmar vuestra asistencia y ayudarnos a organizar los detalles del menú y el transporte:</p>
+            <p style="text-align: center; margin-bottom: 20px;">Por favor, rellenad el siguiente formulario oficial para confirmar vuestra asistencia antes del 1 de mayo de 2027:</p>
             
             <div class="form-container">
-                <!-- SUSTITUYE ESTE ENLACE POR TU URL DE "ENVIAR" -> "INCORPORAR HTML" DE GOOGLE FORMS -->
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf7KSiRpFNST_ONT45evUSR7E6Rh-e9dox89S48ZycvzW1SIg/viewform?usp=dialog>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf7KSiRpFNST_ONT45evUSR7E6Rh-e9dox89S48ZycvzW1SIg/viewform?embedded=true">Cargando formulario...</iframe>
             </div>
         </div>
 
@@ -315,30 +317,39 @@
         <p>Un anillo para gobernarlos a todos. Una boda para reunirlos a todos.</p>
     </div>
 
-    <!-- LÓGICA DE NAVEGACIÓN Y CONTADOR -->
+    <!-- JAVASCRIPT PARA EL MENÚ INTERACTIVO Y EL CONTADOR -->
     <script>
-        // Función para cambiar de página
         function showPage(pageId) {
-            // Ocultar todas las páginas
+            // Ocultar todas las páginas por completo
             const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
+            pages.forEach(page => {
+                page.style.display = 'none';
+                page.classList.remove('active');
+            });
 
-            // Desactivar todos los enlaces del menú
+            // Quitar el estado activo de todos los botones del menú
             const links = document.querySelectorAll('.nav-link');
             links.forEach(link => link.classList.remove('active'));
 
-            // Mostrar la página seleccionada
-            document.getElementById(pageId).classList.add('active');
+            // Mostrar la página que queremos activa
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.classList.add('active');
+            }
 
-            // Activar el botón correspondiente en el menú
-            const activeLink = Array.from(links).find(link => link.getAttribute('onclick').includes(pageId));
-            if (activeLink) activeLink.classList.add('active');
+            // Marcar el botón del menú actual como activo
+            const targetOnClick = "showPage('" + pageId + "')";
+            links.forEach(link => {
+                if (link.getAttribute('onclick') === targetOnClick) {
+                    link.classList.add('active');
+                }
+            });
 
-            // Volver arriba al cambiar de pestaña
+            // Subir arriba del todo suavemente al cambiar de sección
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Lógica de la Cuenta Atrás (19 de Junio de 2027)
+        // Cuenta atrás para el 19 de junio de 2027
         const weddingDate = new Date("June 19, 2027 13:00:00").getTime();
 
         setInterval(function() {
