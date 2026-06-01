@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ana & Mario - ¡Nos casamos!</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Marcellus&family=Pinyon+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Marcellus&display=swap');
 
         :root {
             --gold: #c5a059;
@@ -21,115 +21,183 @@
             color: var(--charcoal);
             margin: 0;
             padding: 0;
-            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .header {
-            padding: 60px 20px;
-            border-bottom: 2px double var(--gold);
-            max-width: 800px;
+        /* Menú de Navegación */
+        nav {
+            background-color: rgba(44, 42, 41, 0.95);
+            border-bottom: 2px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            max-width: 1000px;
             margin: 0 auto;
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            margin: 0;
-            letter-spacing: 4px;
-            color: var(--charcoal);
-            text-transform: lowercase;
-        }
-        h1::first-letter, h1 .and::first-letter, h1 .name2::first-letter {
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            margin-top: 10px;
-            color: var(--dark-gold);
-        }
-
-        .quote-container {
-            font-family: 'Marcellus', serif;
-            font-style: italic;
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 20px;
-            border-left: 3px solid var(--gold);
-            border-right: 3px solid var(--gold);
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-
-        .section {
-            padding: 50px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-family: 'Cinzel', serif;
-            color: var(--dark-gold);
-            font-size: 1.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-        }
-
-        /* Contador */
-        #countdown {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 30px auto;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .time-box {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 15px 25px;
-            border-radius: 4px;
-            border: 1px solid var(--gold);
-            min-width: 80px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .time-number {
-            font-size: 2.2rem;
-            font-weight: bold;
+        .nav-link {
             font-family: 'Cinzel', serif;
-            color: var(--charcoal);
-        }
-
-        .time-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
+            color: var(--parchment);
+            text-decoration: none;
+            padding: 8px 15px;
+            font-size: 0.9rem;
             letter-spacing: 1px;
-            color: var(--dark-gold);
-            margin-top: 5px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid var(--gold);
-            padding: 30px;
-            margin: 20px auto;
-            max-width: 500px;
+            transition: all 0.3s ease;
+            cursor: pointer;
             border-radius: 2px;
         }
 
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Contenedor Principal de Páginas */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+
+        /* Estilo de las "Subpáginas" */
+        .page {
+            display: none; /* Ocultas por defecto */
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        .page.active {
+            display: block; /* Solo se muestra la activa */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tipografías y Elementos Visuales */
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+
+        h2 {
+            color: var(--dark-gold);
+            font-size: 2rem;
+            border-bottom: 1px double var(--gold);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .quote-container {
+            font-style: italic;
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 15px 25px;
+            border-left: 3px solid var(--gold);
+            border-right: 3px solid var(--gold);
+            font-size: 1.3rem;
+            line-height: 1.6;
+        }
+
+        /* Contador de la Portada */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px auto;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px 20px;
+            border: 1px solid var(--gold);
+            min-width: 70px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+        }
+
+        .time-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: 'Cinzel', serif;
+        }
+
+        .time-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--dark-gold);
+            letter-spacing: 1px;
+        }
+
+        /* Tarjetas de información */
+        .card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--gold);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            text-align: left;
+            line-height: 1.7;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--charcoal);
+            border-bottom: 1px dashed var(--gold);
+            padding-bottom: 5px;
+        }
+
+        /* Formulario Iframe */
+        .form-container {
+            position: relative;
+            width: 100%;
+            padding-top: 120%; /* Ajuste para que se vea bien el Google Form */
+            overflow: hidden;
+        }
+
+        .form-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Botones */
         .btn {
             display: inline-block;
             background-color: var(--charcoal);
             color: var(--parchment);
-            padding: 12px 30px;
+            padding: 12px 25px;
             text-decoration: none;
             font-family: 'Cinzel', serif;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
             border: 1px solid var(--gold);
             transition: all 0.3s ease;
-            margin-top: 20px;
             cursor: pointer;
+            margin-top: 10px;
         }
 
         .btn:hover {
@@ -138,62 +206,142 @@
         }
 
         .footer {
-            padding: 40px 20px;
-            font-size: 0.9rem;
-            color: #777;
-            border-top: 1px solid rgba(197, 160, 89, 0.3);
-            max-width: 800px;
-            margin: 40px auto 0 auto;
+            padding: 30px 20px;
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            margin-top: auto;
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>ana & mario</h1>
-        <div class="subtitle">¡Nos Casamos!</div>
-    </div>
-
-    <div class="quote-container">
-        "Prefiero compartir una vida contigo que enfrentarme a todas las edades de este mundo sola."
-    </div>
-
-    <div class="section">
-        <h2>La Cuenta Atrás</h2>
-        <div id="countdown">
-            <div class="time-box"><div class="time-number" id="days">00</div><div class="time-label">Días</div></div>
-            <div class="time-box"><div class="time-number" id="hours">00</div><div class="time-label">Horas</div></div>
-            <div class="time-box"><div class="time-number" id="minutes">00</div><div class="time-label">Min</div></div>
-            <div class="time-box"><div class="time-number" id="seconds">00</div><div class="time-label">Seg</div></div>
+    <!-- Menú Superior -->
+    <nav>
+        <div class="nav-container">
+            <span class="nav-link active" onclick="showPage('inicio')">Inicio</span>
+            <span class="nav-link" onclick="showPage('nosotros')">Sobre Nosotros</span>
+            <span class="nav-link" onclick="showPage('ceremonia')">La Ceremonia</span>
+            <span class="nav-link" onclick="showPage('info')">Más Info</span>
+            <span class="nav-link" onclick="showPage('regalos')">Regalos</span>
+            <span class="nav-link" onclick="showPage('confirmacion')">Asistencia</span>
         </div>
-    </div>
+    </nav>
 
-    <div class="section">
-        <h2>Cuándo y Dónde</h2>
-        <div class="card">
-            <h3>El Gran Día</h3>
-            <p><strong>19 de Junio de 2027</strong></p>
-            <p>Hotel San Camillo</p>
-            <p>Navarrete, La Rioja</p>
-            <a href="https://maps.google.com" target="_blank" class="btn">Cómo llegar</a>
+    <!-- Contenido Cambiante -->
+    <div class="main-content">
+
+        <!-- PÁGINA 1: INICIO -->
+        <div id="inicio" class="page active">
+            <div style="padding: 40px 0;">
+                <h1>ana & mario</h1>
+                <div class="quote-container">
+                    "Prefiero compartir una vida contigo que enfrentarme a todas las edades de este mundo sola."
+                </div>
+                <div id="countdown">
+                    <div class="time-box"><div class="time-number" id="days">00</div><div class="time-label">Días</div></div>
+                    <div class="time-box"><div class="time-number" id="hours">00</div><div class="time-label">Horas</div></div>
+                    <div class="time-box"><div class="time-number" id="minutes">00</div><div class="time-label">Min</div></div>
+                    <div class="time-box"><div class="time-number" id="seconds">00</div><div class="time-label">Seg</div></div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>Confirmación</h2>
-        <p>Agradecemos que nos confirméis vuestra asistencia antes del 1 de mayo de 2027.</p>
-        <a href="https://wa.me/34608XXXXXX?text=¡Hola!+Confirmamos+nuestra+asistencia+a+la+boda." target="_blank" class="btn">Confirmar Asistencia</a>
+        <!-- PÁGINA 2: SOBRE NOSOTROS -->
+        <div id="nosotros" class="page">
+            <h2>Sobre Nosotros</h2>
+            <div class="card">
+                <h3>Nuestra Historia</h3>
+                <p>Aquí podéis redactar un texto breve y bonito sobre vosotros, cómo empezó vuestro viaje juntos y cómo habéis llegado hasta este gran momento a las puertas de vuestra propia aventura.</p>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: LA CEREMONIA -->
+        <div id="ceremonia" class="page">
+            <h2>La Ceremonia</h2>
+            <div class="card">
+                <h3>Dónde & Cuándo</h3>
+                <p><strong>Fecha:</strong> 19 de Junio de 2027</p>
+                <p><strong>Lugar:</strong> Hotel San Camillo, Navarrete (La Rioja)</p>
+                <p><strong>Hora:</strong> 13:00 h</p>
+                <p>Acompañadnos en este enclave tan especial donde uniremos nuestros caminos de manera oficial.</p>
+                <a href="https://maps.google.com" target="_blank" class="btn">Ver mapa en Google Maps</a>
+            </div>
+        </div>
+
+        <!-- PÁGINA 4: MÁS INFO -->
+        <div id="info" class="page">
+            <h2>Más Información</h2>
+            <div class="card">
+                <h3>Autobuses y Traslados</h3>
+                <p>Para vuestra comodidad, organizaremos un servicio de autobuses para el desplazamiento de los invitados. Próximamente os detallaremos los horarios y puntos exactos de recogida.</p>
+            </div>
+            <div class="card">
+                <h3>Alojamiento</h3>
+                <p>Si venís de fuera o preferís quedaros a dormir cerca de la celebración, el propio Hotel San Camillo en Navarrete o la cercana ciudad de Logroño ofrecen opciones estupendas.</p>
+            </div>
+        </div>
+
+        <!-- PÁGINA 5: REGALOS -->
+        <div id="regalos" class="page">
+            <h2>Regalos</h2>
+            <div class="card" style="text-align: center;">
+                <h3>Un empujón para nuestro viaje</h3>
+                <p>El mayor regalo que nos podéis hacer es compartir este día con nosotros. Sin embargo, si deseáis colaborar y ayudarnos en el inicio de esta nueva etapa de nuestra vida juntos, podéis hacerlo a través del siguiente número de cuenta:</p>
+                
+                <div style="background: rgba(197, 160, 89, 0.1); padding: 15px; border: 1px dashed var(--gold); display: inline-block; font-family: monospace; font-size: 1.2rem; margin: 15px 0; letter-spacing: 1px;">
+                    ES21 0000 0000 0000 0000 0000
+                </div>
+                
+                <p style="font-size: 0.9rem; color: var(--dark-gold);">Titulares: Ana y Mario</p>
+            </div>
+        </div>
+
+        <!-- PÁGINA 6: CONFIRMACIÓN DE ASISTENCIA -->
+        <div id="confirmacion" class="page">
+            <h2>Confirmación de Asistencia</h2>
+            <p style="margin-bottom: 20px;">Por favor, rellenad el siguiente formulario para confirmar vuestra asistencia y ayudarnos a organizar los detalles del menú y el transporte:</p>
+            
+            <div class="form-container">
+                <!-- SUSTITUYE ESTE ENLACE POR TU URL DE "ENVIAR" -> "INCORPORAR HTML" DE GOOGLE FORMS -->
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfXXXXXXXXXXXXX/viewform?embedded=true">Cargando formulario...</iframe>
+            </div>
+        </div>
+
     </div>
 
     <div class="footer">
         <p>Un anillo para gobernarlos a todos. Una boda para reunirlos a todos.</p>
     </div>
 
+    <!-- LÓGICA DE NAVEGACIÓN Y CONTADOR -->
     <script>
-        // Configurar la fecha de la boda: 19 de junio de 2027
+        // Función para cambiar de página
+        function showPage(pageId) {
+            // Ocultar todas las páginas
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Desactivar todos los enlaces del menú
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => link.classList.remove('active'));
+
+            // Mostrar la página seleccionada
+            document.getElementById(pageId).classList.add('active');
+
+            // Activar el botón correspondiente en el menú
+            const activeLink = Array.from(links).find(link => link.getAttribute('onclick').includes(pageId));
+            if (activeLink) activeLink.classList.add('active');
+
+            // Volver arriba al cambiar de pestaña
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Lógica de la Cuenta Atrás (19 de Junio de 2027)
         const weddingDate = new Date("June 19, 2027 13:00:00").getTime();
 
-        const timer = setInterval(function() {
+        setInterval(function() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
 
@@ -206,11 +354,6 @@
             document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
             document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
-
-            if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "¡HOY ES EL GRAN DÍA!";
-            }
         }, 1000);
     </script>
 </body>
