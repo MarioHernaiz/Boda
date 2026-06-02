@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ana & Mario - ¡Nos casamos!</title>
-    <style>
-        /* IMPORTAMOS LAS FUENTES (INCLUIDA ANIRON/CINZEL PARA EL ESTILO TOLKIEN) */
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Marcellus&display=swap');
-        @import url('https://fonts.cdnfonts.com/css/aniron');
+    
+    <!-- FUENTES SEGURAS DESDE HTTPS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/aniron" rel="stylesheet">
 
+    <style>
         :root {
             --gold: #c5a059;
             --dark-gold: #9a763e;
@@ -19,6 +22,9 @@
         /* EVITAR SCROLL MIENTRAS ESTÁ EL CARTEL */
         html, body {
             overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
         body.loading {
             overflow: hidden;
@@ -29,8 +35,6 @@
             background-color: var(--parchment);
             background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
             color: var(--charcoal);
-            margin: 0;
-            padding: 0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -76,6 +80,7 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 50px rgba(0,0,0,0.6);
             transform: rotate(-1.5deg);
             border-radius: 4px;
+            box-sizing: border-box;
         }
 
         /* TIPOGRAFÍA ESTILO PARTY BUSINESS (ANIRON) */
@@ -148,7 +153,7 @@
             margin: 0 auto;
             width: 100%;
             padding: 40px 20px;
-            margin-top: 80px;
+            margin-top: 100px;
             box-sizing: border-box;
         }
 
@@ -311,6 +316,7 @@
 </head>
 <body class="loading">
 
+    <!-- INTRO ANIMADA: CARTEL EN MADERA CON TIPOGRAFÍA TOLKIEN -->
     <div id="splash-screen" onclick="dismissSplash()">
         <div class="party-sign">
             <h2>NO ADMITTANCE</h2>
@@ -318,6 +324,7 @@
         </div>
     </div>
 
+    <!-- MENÚ SUPERIOR DE NAVEGACIÓN -->
     <nav id="navbar">
         <div class="nav-container">
             <span class="nav-link active" onclick="showPage('inicio')">Inicio</span>
@@ -330,8 +337,10 @@
         </div>
     </nav>
 
+    <!-- CONTENIDO DE LAS SUBPÁGINAS -->
     <div class="main-content">
 
+        <!-- PÁGINA 1: INICIO -->
         <div id="inicio" class="page active">
             <div style="padding: 20px 0; text-align: center;">
                 <h1>ana & mario</h1>
@@ -352,26 +361,28 @@
             </div>
         </div>
 
+        <!-- PÁGINA 2: SOBRE NOSOTROS -->
         <div id="nosotros" class="page">
             <h2>Sobre nosotros</h2>
             
             <div class="card">
                 <h3>Encuentro mágico entre apuntes</h3>
-                <p>Todo comenzó en 2019, durante nuestro último año de carrera. El destino (o el frikismo) quiso que coincidiéramos porque una sudadera con la mítica frase <em>"It's LeviOsa, no LeviosÁ"</em> llamó la atención de Mario. Lo que empezó como una simple charla entre dos personas con pasiones en común, nos llevó a terminar sentándonos juntos en las pocas asignaturas que compartíamos. Al acabar el curso, la vida nos llevó por caminos separados: kilómetros de distancia entre Madrid e Irlanda y un contacto mínimo que mantuvimos a base de mensajes ocasionales.</p>
+                <p>Todo comenzó en 2019, durante nuestro último año de carrera. El destino quiso que coincidiéramos porque una sudadera con la mítica frase <em>"It's LeviOsa, no LeviosÁ"</em> llamó la atención de Mario. Lo que empezó como una simple charla entre dos personas con pasiones en común, nos llevó a terminar sentándonos juntos en las pocas asignaturas que compartíamos. Al acabar el curso, la vida nos llevó por caminos separados: kilómetros de distancia entre Madrid e Irlanda y un contacto mínimo que mantuvimos a base de mensajes ocasionales.</p>
             </div>
 
             <div class="card">
                 <h3>Primeros pasos</h3>
-                <p>But paths that are crossed truly always meet again. A la vuelta de nuestros respectivos viajes, y tras posponer un café más veces de las que nos gustaría admitir, nuestro reencuentro definitivo llegó en septiembre de 2022. Aunque la verdadera prueba de fuego fue en las fiestas de San Mateo, en la que consideramos nuestra primera cita oficial. Salimos de fiesta, lo pasamos increíble y, como broche de oro... ¡Ana le pegó una gripe a Mario que lo dejó encamado un día entero! Dicen que lo que no te mata te hace más fuerte, y a nosotros nos unió todavía más.</p>
+                <p>Pero los caminos que están destinados a cruzarse, siempre se vuelven a encontrar. A la vuelta de nuestros respectivos viajes, nuestro reencuentro definitivo llegó en septiembre de 2022. Aunque la verdadera prueba de fuego fue en las fiestas de San Mateo, en la que consideramos nuestra primera cita oficial. Salimos de fiesta, lo pasamos increíble y, como broche de oro... ¡Ana le pegó una gripe a Mario que lo dejó encamado un día entero! Dicen que lo que no te mata te hace más fuerte, y a nosotros nos unió todavía más.</p>
             </div>
 
             <div class="card">
                 <h3>Emboscada y primer sí quiero</h3>
-                <p>El gran hito llegó el 19 de noviembre de 2022. En mitad de un bar, Ana decidió dar el paso y lanzó una "emboscada" histórica a Mario con una historia cojonuda que había visto en un TikTok pillando a Mario muy fuera de juego. Los nervios traicionaron tanto a Mario que mientras balbuceaba, pensaba y ordenaba sus pensamientos ahogó los silencios en la pinta de cerveza que nos acababan de servir acabándosela en menos de lo que su cerebro conseguía procesar. Lo más increíble (y que Ana confesó muchos meses después) es que Mario salió de allí convencido de que ya tenía novia, mientras Ana se quedó con dudas porque, entre el balbuceo, la velocidad con la que desapareció la cerveza y los nervios, ¡no sabía si le había dado un "sí" rotundo!</p>
+                <p>El gran hito llegó el 19 de noviembre de 2022. En mitad de un bar, Ana decidió dar el paso y lanzó una "emboscada" histórica a Mario con una propuesta muy original. Los nervios traicionaron tanto a Mario que mientras ordenaba sus pensamientos ahogó los silencios en la pinta de cerveza que nos acababan de servir, acabándosela en un abrir y cerrar de ojos. Lo más increíble es que Mario salió de allí convencido de que ya tenía novia, mientras Ana se quedó con dudas porque entre el balbuceo y la velocidad con la que desapareció la cerveza, ¡no sabía si le había dado un "sí" rotundo!</p>
                 <p>Al final, como veis, todo ha salido bien. Así comienza la aventura más grande de nuestras vidas. ¡Gracias por formar parte de ella!</p>
             </div>
         </div>
 
+        <!-- PÁGINA 3: PREBODA -->
         <div id="preboda" class="page">
             <h2>Preboda</h2>
             
@@ -407,6 +418,7 @@
             </div>
         </div>
 
+        <!-- PÁGINA 4: LA CEREMONIA -->
         <div id="ceremonia" class="page">
             <h2>La ceremonia y la fiesta</h2>
             
@@ -457,29 +469,24 @@
                         <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">Autobuses de vuelta</strong>
                         <span style="font-size: 0.95rem; color: #555;">Habrá servicio de regreso nocturno con paradas de vuelta en Fuenmayor y Peralta respectivamente, distribuidos en diferentes horarios. Está todo en el apartado "Más información".</span>
                     </div>
-                    
-                    <div style="position: relative;">
-                        <span style="position: absolute; left: -27px; top: 2px; background: var(--gold); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">La fiesta continúa (PENDIENTE DE VALORAR)</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Todos al Bar Dados en Fuenmayor, que la noche es joven.</span>
-                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- PÁGINA 5: MÁS INFO -->
         <div id="info" class="page">
             <h2>Más Información</h2>
             
             <div class="card">
                 <h3>¿Dónde alojarse?</h3>
-                <p>Como vais a ser poquitos los que venís de fuera, <strong>nuestra recomendación principal es que busquéis alojamiento directamente en Fuenmayor</strong>. Así estaremos todos mucho más cerca, la logística será más sencilla y podremos exprimir el fin de semana juntos.</p>
-                <p>Fuenmayor tiene opciones muy cucas de casas rurales, apartamentos y hostales. Si estáis interesados en quedaros aquí, <strong>escribidnos por privado</strong> y os pasamos las mejores opciones directamente para ayudaros a reservar.</p>
+                <p>Nuestra recomendación principal es que busquéis alojamiento directamente en <strong>Fuenmayor</strong>. Así estaremos todos mucho más cerca, la logística será más sencilla y podremos exprimir el fin de semana juntos.</p>
+                <p>Fuenmayor tiene opciones de casas rurales, apartamentos y hostales. Si estáis interesados en quedaros aquí, escribidnos por privado y os pasamos las mejores opciones directamente para ayudaros a reservar.</p>
                 
-                <p style="margin-top: 20px;">Si por lo que sea preferís la comodidad de la capital o buscáis hoteles más grandes, <strong>Logroño</strong> está a apenas 12 minutos en coche y cuenta con una oferta enorme:</p>
+                <p style="margin-top: 20px;">Si preferís la comodidad de la capital o buscáis hoteles más grandes, <strong>Logroño</strong> está a apenas 12 minutos en coche y cuenta con una oferta enorme:</p>
                 
                 <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
                     <div style="flex: 1; min-width: 250px;">
-                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 10px;">Hoteles recomendados en Logroño</strong>
+                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 10px;">Hoteles en Logroño</strong>
                         <ul style="padding-left: 20px; margin: 0; line-height: 1.6;">
                             <li>Sercotel Portales (3★)</li>
                             <li>Hotel Condes de Haro (3★)</li>
@@ -490,7 +497,7 @@
                         </ul>
                     </div>
                     <div style="flex: 1; min-width: 250px;">
-                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 10px;">Apartamentos turísticos en Logroño</strong>
+                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 10px;">Apartamentos en Logroño</strong>
                         <ul style="padding-left: 20px; margin: 0; line-height: 1.6;">
                             <li>Sercotel Logroño Suites</li>
                             <li>ALAIA Rooms</li>
@@ -500,28 +507,25 @@
                 </div>
 
                 <div style="background: rgba(197, 160, 89, 0.1); border-left: 4px solid var(--gold); padding: 15px; margin-top: 25px; border-radius: 0 4px 4px 0;">
-                    <p style="margin: 0; font-size: 0.95rem;"><strong>⚠️ Consejo importante:</strong> No lo dejéis para el final. Junio es <strong>temporada alta del Camino de Santiago</strong> y tanto Navarrete como Logroño y Fuenmayor se llenan de peregrinos de todo el mundo. La ocupación de los alojamientos sube como la espuma en estas fechas, ¡así que reservad en cuanto podáis!</p>
+                    <p style="margin: 0; font-size: 0.95rem;"><strong>⚠️ Consejo importante:</strong> No lo dejéis para el final. Junio es temporada alta del Camino de Santiago y la zona se llena de peregrinos de todo el mundo. La ocupación sube como la espuma en estas fechas, ¡así que reservad en cuanto podáis!</p>
                 </div>
             </div>
             
             <div class="card">
-                <p>Aunque vivimos en Fuenmayor, la ceremonia es en Navarrete. Por si os apetece visitar la zona:</p>
-                <h3>Navarrete</h3>
-                <p>Navarrete, villa histórica ligada íntimamente al Camino de Santiago y declarada Conjunto Histórico-Artístico, será el escenario de nuestro gran día. Con su tradición alfarera y sus calles empedradas de origen medieval, nos encanta la idea de celebrar nuestra boda en un rincón de La Rioja con tanta solera y encanto.</p>
-
-                <h3>Hotel San Camilo</h3>
-                <p>El Hotel San Camilo destaca por sus impresionantes jardines y arboledas, ofreciendo un entorno natural, elegante y tranquilo. Sus espacios exteriores e interiores están perfectamente preparados para acoger cada momento de la celebración, permitiéndonos disfrutar al máximo de la fiesta junto a vosotros en un ambiente mágico y acogedor.</p>
+                <h3>El Entorno</h3>
+                <p><strong>Navarrete:</strong> Villa histórica ligada íntimamente al Camino de Santiago y declarada Conjunto Histórico-Artístico. Con su tradición alfarera y sus calles empedradas de origen medieval, nos encanta la idea de celebrar nuestra boda en un rincón de La Rioja con tanta solera y encanto.</p>
+                <p><strong>Hotel San Camilo:</strong> Destaca por sus impresionantes jardines y arboledas, ofreciendo un entorno natural, elegante y tranquilo. Sus espacios están perfectamente preparados para acoger cada momento de la celebración.</p>
             </div>
 
             <div class="card">
                 <h2>Qué hacer en La Rioja</h2>
                 <p>Si vais a aprovechar el fin de semana para hacer un poco de turismo, aquí van nuestros imprescindibles:</p>
                 
-                <h3>Planes obligatorios</h3>
+                <h3>Planes recomendados</h3>
                 <ul style="padding-left: 20px; line-height: 1.7; margin-bottom: 25px;">
                     <li><strong>Ir de pinchos:</strong> Perderse por la mítica Calle Laurel o la Calle San Juan en Logroño es un deporte regional.</li>
                     <li><strong>Visitar una bodega:</strong> Estáis en la tierra del vino; una visita guiada con cata es el plan perfecto para la mañana del viernes o el domingo.</li>
-                    <li><strong>Turismo rural:</strong> Si os apetece moveros, pueblos medievales como Laguardia (en la Rioja Alavesa), Briones o los Monasterios de Suso y Yuso en San Millán de la Cogolla son espectaculares.</li>
+                    <li><strong>Turismo rural:</strong> Si os apetece moveros, pueblos medievales como Laguardia, Briones o los Monasterios de Suso y Yuso en San Millán de la Cogolla son espectaculares.</li>
                 </ul>
 
                 <h3>Dónde comer y beber</h3>
@@ -535,11 +539,12 @@
             </div>
         </div>
 
+        <!-- PÁGINA 6: LISTA DE BODA -->
         <div id="regalos" class="page">
             <h2>Lista de boda</h2>
             <div class="card" style="text-align: center;">
                 <h3>Un empujón para nuestro viaje</h3>
-                <p>El mayor regalo que nos podéis hacer es compartir este día con nosotros. Sin embargo, si deseáis colaborar y ayudarnos en el inicio de esta nueva etapa de nuestra vida juntos, podéis hacerlo a través del siguiente número de cuenta:</p>
+                <p>El mayor regalo que nos podéis hacer es compartir este día con nosotros. Sin embargo, si deseáis colaborar y ayudarnos en el inicio de esta nueva etapa, podéis hacerlo a través del siguiente número de cuenta:</p>
                 
                 <div style="background: rgba(197, 160, 89, 0.1); padding: 15px; border: 1px dashed var(--gold); display: inline-block; font-family: monospace; font-size: 1.2rem; margin: 15px 0; letter-spacing: 1px;">
                     ES21 0000 0000 0000 0000 0000
@@ -563,6 +568,7 @@
             </div>
         </div>
 
+        <!-- PÁGINA 7: CONFIRMA TU ASISTENCIA -->
         <div id="confirmacion" class="page">
             <h2>Confirma tu asistencia</h2>
             <p style="text-align: center; margin-bottom: 20px;">Por favor, rellenad el siguiente formulario oficial para confirmar vuestra asistencia antes del 1 de mayo de 2027:</p>
@@ -578,6 +584,7 @@
         <p>Un anillo para gobernarlos a todos. Una boda para reunirlos a todos.</p>
     </div>
 
+    <!-- JAVASCRIPT -->
     <script>
         // Configuración de la pantalla de inicio (Desaparece tras 2.5 segundos de forma automática)
         window.addEventListener('DOMContentLoaded', () => {
@@ -594,7 +601,7 @@
                 document.body.classList.remove('loading');
                 setTimeout(() => {
                     splash.style.display = 'none';
-                }, 800); // Espera a que termine la animación de opacidad
+                }, 800);
             }
         }
 
@@ -614,7 +621,6 @@
                 activePage.classList.add('active');
             }
 
-            // Activa el botón correcto del menú superior
             links.forEach(link => {
                 if (link.getAttribute('onclick') === "showPage('" + pageId + "')") {
                     link.classList.add('active');
@@ -631,7 +637,6 @@
             const now = new Date().getTime();
             const distance = weddingDate - now;
 
-            // Si la fecha ya ha pasado
             if (distance < 0) {
                 clearInterval(countdownInterval);
                 document.getElementById("countdown").innerHTML = "<h3>¡Llegó el gran día!</h3>";
@@ -643,11 +648,13 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Añadir ceros a la izquierda si el valor es menor a 10
-            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
-            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
-            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+            // Evitamos errores comprobando si los elementos existen antes de inyectar texto
+            if(document.getElementById("days")) {
+                document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+                document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+                document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+                document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+            }
         }, 1000);
     </script>
 </body>
