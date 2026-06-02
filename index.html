@@ -1,640 +1,650 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana & Mario - ¡Nos casamos!</title>
-    <style>
-        /* IMPORTAMOS LAS FUENTES (INCLUIDA ANIRON/CINZEL PARA EL ESTILO TOLKIEN) */
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Marcellus&display=swap');
-        @import url('https://fonts.cdnfonts.com/css/aniron');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana & Mario - ¡Nos casamos!</title>
+    <style>
+        /* IMPORTAMOS LAS FUENTES (INCLUIDA ANIRON/CINZEL PARA EL ESTILO TOLKIEN) */
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Marcellus&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/aniron');
 
-        :root {
-            --gold: #c5a059;
-            --dark-gold: #9a763e;
-            --charcoal: #2c2a29;
-            --parchment: #f4efe2;
-        }
+        :root {
+            --gold: #c5a059;
+            --dark-gold: #9a763e;
+            --charcoal: #2c2a29;
+            --parchment: #f4efe2;
+        }
 
-        /* EVITAR SCROLL MIENTRAS ESTÁ EL CARTEL */
-        html, body {
-            overflow-x: hidden;
-        }
-        body.loading {
-            overflow: hidden;
-        }
+        /* EVITAR SCROLL MIENTRAS ESTÁ EL CARTEL */
+        html, body {
+            overflow-x: hidden;
+        }
+        body.loading {
+            overflow: hidden;
+        }
 
-        body {
-            font-family: 'Marcellus', serif;
-            background-color: var(--parchment);
-            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
-            color: var(--charcoal);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+        body {
+            font-family: 'Marcellus', serif;
+            background-color: var(--parchment);
+            background-image: url('https://www.transparenttextures.com/patterns/parchment.png');
+            color: var(--charcoal);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-        /* PANTALLA DE INICIO (CARTEL DE BILBO EN MADERA) */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #1a1919;
-            background-image: url('https://www.transparenttextures.com/patterns/black-thread.png');
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100000;
-            transition: opacity 0.8s ease-in-out, visibility 0.8s;
-            opacity: 1;
-            visibility: visible;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+        /* PANTALLA DE INICIO (CARTEL DE BILBO EN MADERA) */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #1a1919;
+            background-image: url('https://www.transparenttextures.com/patterns/black-thread.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100000;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s;
+            opacity: 1;
+            visibility: visible;
+            padding: 20px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
 
-        #splash-screen.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
+        #splash-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
 
-        /* El Cartel con textura de Madera Antigua */
-        .party-sign {
-            background-color: #3d2a1d;
-            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
-            border: 6px solid #271a11;
-            outline: 2px solid var(--gold);
-            outline-offset: -12px;
-            padding: 50px 35px;
-            max-width: 550px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 50px rgba(0,0,0,0.6);
-            transform: rotate(-1.5deg);
-            border-radius: 4px;
-        }
+        /* El Cartel con textura de Madera Antigua */
+        .party-sign {
+            background-color: #3d2a1d;
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+            border: 6px solid #271a11;
+            outline: 2px solid var(--gold);
+            outline-offset: -12px;
+            padding: 50px 35px;
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7), inset 0 0 50px rgba(0,0,0,0.6);
+            transform: rotate(-1.5deg);
+            border-radius: 4px;
+        }
 
-        /* TIPOGRAFÍA ESTILO PARTY BUSINESS (ANIRON) */
-        .party-sign h2 {
-            font-family: 'Aniron', 'Cinzel', serif;
-            color: #d1b47d;
-            font-size: 2.1rem;
-            margin: 0 0 15px 0;
-            border-bottom: 2px dashed rgba(209, 180, 125, 0.4);
-            padding-bottom: 15px;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
+        /* TIPOGRAFÍA ESTILO PARTY BUSINESS (ANIRON) */
+        .party-sign h2 {
+            font-family: 'Aniron', 'Cinzel', serif;
+            color: #d1b47d;
+            font-size: 2.1rem;
+            margin: 0 0 15px 0;
+            border-bottom: 2px dashed rgba(209, 180, 125, 0.4);
+            padding-bottom: 15px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
 
-        .party-sign p {
-            font-family: 'Aniron', 'Cinzel', serif;
-            color: #f4efe2;
-            font-size: 1.1rem;
-            margin: 0;
-            letter-spacing: 3px;
-            line-height: 1.6;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
+        .party-sign p {
+            font-family: 'Aniron', 'Cinzel', serif;
+            color: #f4efe2;
+            font-size: 1.1rem;
+            margin: 0;
+            letter-spacing: 3px;
+            line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
 
-        /* MENÚ DE NAVEGACIÓN TOTALMENTE FIJO ARRIBA */
-        nav {
-            background-color: #2c2a29 !important;
-            border-bottom: 2px solid var(--gold);
-            position: fixed; /* Cambiado a fixed para asegurar el bloqueo total */
-            top: 0;
-            left: 0;
-            z-index: 9999;
-            padding: 15px 0;
-            width: 100%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
+        /* MENÚ DE NAVEGACIÓN TOTALMENTE FIJO ARRIBA */
+        nav {
+            background-color: #2c2a29 !important;
+            border-bottom: 2px solid var(--gold);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            padding: 15px 0;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
 
-        .nav-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            padding: 0 10px;
-        }
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 0 10px;
+        }
 
-        .nav-link {
-            font-family: 'Cinzel', serif;
-            color: var(--parchment) !important;
-            text-decoration: none;
-            padding: 8px 14px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: 1px solid transparent;
-        }
+        .nav-link {
+            font-family: 'Cinzel', serif;
+            color: var(--parchment) !important;
+            text-decoration: none;
+            padding: 8px 14px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
 
-        .nav-link:hover, .nav-link.active {
-            color: var(--gold) !important;
-            border: 1px solid var(--gold);
-            background-color: rgba(255, 255, 255, 0.05);
-        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--gold) !important;
+            border: 1px solid var(--gold);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
 
-        /* Contenedor Principal con espacio superior para el menú fijo */
-        .main-content {
-            flex: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            width: 100%;
-            padding: 40px 20px;
-            margin-top: 80px; /* Compensación del menú fijo para que no pise las letras */
-            box-sizing: border-box;
-        }
+        /* Contenedor Principal con espacio superior para el menú fijo */
+        .main-content {
+            flex: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 40px 20px;
+            margin-top: 80px;
+            box-sizing: border-box;
+        }
 
-        /* Sistema de pestañas */
-        .page {
-            display: none; 
-        }
+        /* Sistema de pestañas */
+        .page {
+            display: none; 
+        }
 
-        .page.active {
-            display: block !important;
-            animation: fadeIn 0.4s ease-in-out;
-        }
+        .page.active {
+            display: block !important;
+            animation: fadeIn 0.4s ease-in-out;
+        }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        h1, h2, h3 {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 2px;
-        }
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+        }
 
-        h1 {
-            font-size: 3.2rem;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            color: var(--charcoal);
-        }
+        h1 {
+            font-size: 3.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+            text-align: center;
+        }
 
-        h2 {
-            color: var(--dark-gold);
-            font-size: 1.8rem;
-            border-bottom: 1px double var(--gold);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-        }
+        h2 {
+            color: var(--dark-gold);
+            font-size: 1.8rem;
+            border-bottom: 1px double var(--gold);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
 
-        .quote-container {
-            font-style: italic;
-            max-width: 650px;
-            margin: 30px auto;
-            padding: 15px 25px;
-            border-left: 3px solid var(--gold);
-            border-right: 3px solid var(--gold);
-            font-size: 1.25rem;
-            line-height: 1.6;
-        }
+        .quote-container {
+            font-style: italic;
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 15px 25px;
+            border-left: 3px solid var(--gold);
+            border-right: 3px solid var(--gold);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            text-align: center;
+        }
 
-        .welcome-container {
-            max-width: 600px;
-            margin: 40px auto 20px auto;
-            font-size: 1.15rem;
-            line-height: 1.7;
-            color: var(--charcoal);
-            border-top: 1px dashed rgba(197, 160, 89, 0.4);
-            padding-top: 30px;
-        }
+        .welcome-container {
+            max-width: 600px;
+            margin: 40px auto 20px auto;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--charcoal);
+            border-top: 1px dashed rgba(197, 160, 89, 0.4);
+            padding-top: 30px;
+            text-align: center;
+        }
 
-        /* Contador */
-        #countdown {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 40px auto;
-            flex-wrap: wrap;
-        }
+        /* Contador */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px auto;
+            flex-wrap: wrap;
+        }
 
-        .time-box {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 15px 20px;
-            border: 1px solid var(--gold);
-            min-width: 70px;
-            border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-        }
+        .time-box {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 15px 20px;
+            border: 1px solid var(--gold);
+            min-width: 70px;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            text-align: center;
+        }
 
-        .time-number {
-            font-size: 2.4rem;
-            font-weight: bold;
-            font-family: 'Cinzel', serif;
-        }
+        .time-number {
+            font-size: 2.4rem;
+            font-weight: bold;
+            font-family: 'Cinzel', serif;
+        }
 
-        .time-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--dark-gold);
-            letter-spacing: 1px;
-        }
+        .time-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--dark-gold);
+            letter-spacing: 1px;
+        }
 
-        /* Tarjetas */
-        .card {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid var(--gold);
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 4px;
-            text-align: left;
-            line-height: 1.7;
-        }
+        /* Tarjetas */
+        .card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--gold);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            text-align: left;
+            line-height: 1.7;
+        }
 
-        .card h3 {
-            margin-top: 0;
-            border-bottom: 1px dashed var(--gold);
-            padding-bottom: 5px;
-        }
+        .card h3 {
+            margin-top: 0;
+            border-bottom: 1px dashed var(--gold);
+            padding-bottom: 5px;
+        }
 
-        /* Contenedor del Formulario Iframe */
-        .form-container {
-            width: 100%;
-            max-width: 640px;
-            margin: 0 auto;
-            height: 900px;
-            border: 1px solid var(--gold);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border-radius: 4px;
-            overflow: hidden;
-        }
+        /* Contenedor del Formulario Iframe */
+        .form-container {
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+            height: 900px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
 
-        .form-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
+        .form-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--charcoal);
-            color: var(--parchment);
-            padding: 12px 25px;
-            text-decoration: none;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            border: 1px solid var(--gold);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+        .btn {
+            display: inline-block;
+            background-color: var(--charcoal);
+            color: var(--parchment);
+            padding: 12px 25px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            border: 1px solid var(--gold);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
 
-        .btn:hover {
-            background-color: var(--dark-gold);
-            color: white;
-        }
+        .btn:hover {
+            background-color: var(--dark-gold);
+            color: white;
+        }
 
-        .footer {
-            padding: 30px 20px;
-            font-size: 0.85rem;
-            color: #666;
-            text-align: center;
-            border-top: 1px solid rgba(197, 160, 89, 0.2);
-            margin-top: auto;
-        }
-    </style>
+        .footer {
+            padding: 30px 20px;
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+            border-top: 1px solid rgba(197, 160, 89, 0.2);
+            margin-top: auto;
+        }
+    </style>
 </head>
 <body class="loading">
 
-    <!-- INTRO ANIMADA: CARTEL EN MADERA CON TIPOGRAFÍA TOLKIEN -->
-    <div id="splash-screen">
-        <div class="party-sign">
-            <h2>NO ADMITTANCE</h2>
-            <p>EXCEPT ON PARTY BUSINESS</p>
-        </div>
-    </div>
+    <div id="splash-screen" onclick="dismissSplash()">
+        <div class="party-sign">
+            <h2>NO ADMITTANCE</h2>
+            <p>EXCEPT ON PARTY BUSINESS</p>
+        </div>
+    </div>
 
-    <!-- MENÚ SUPERIOR DE NAVEGACIÓN -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <span class="nav-link active" onclick="showPage('inicio')">Inicio</span>
-            <span class="nav-link" onclick="showPage('nosotros')">Sobre nosotros</span>
-            <span class="nav-link" onclick="showPage('preboda')">Preboda</span>
-            <span class="nav-link" onclick="showPage('ceremonia')">La ceremonia</span>
-            <span class="nav-link" onclick="showPage('info')">Más Información</span>
-            <span class="nav-link" onclick="showPage('regalos')">Lista de boda</span>
-            <span class="nav-link" onclick="showPage('confirmacion')">Confirma tu asistencia</span>
-        </div>
-    </nav>
+    <nav id="navbar">
+        <div class="nav-container">
+            <span class="nav-link active" onclick="showPage('inicio')">Inicio</span>
+            <span class="nav-link" onclick="showPage('nosotros')">Sobre nosotros</span>
+            <span class="nav-link" onclick="showPage('preboda')">Preboda</span>
+            <span class="nav-link" onclick="showPage('ceremonia')">La ceremonia</span>
+            <span class="nav-link" onclick="showPage('info')">Más Información</span>
+            <span class="nav-link" onclick="showPage('regalos')">Lista de boda</span>
+            <span class="nav-link" onclick="showPage('confirmacion')">Confirma tu asistencia</span>
+        </div>
+    </nav>
 
-    <!-- CONTENIDO DE LAS SUBPÁGINAS -->
-    <div class="main-content">
+    <div class="main-content">
 
-        <!-- PÁGINA 1: INICIO -->
-        <div id="inicio" class="page active">
-            <div style="padding: 20px 0; text-align: center;">
-                <h1>ana & mario</h1>
-                <div class="quote-container">
-                    "Prefiero compartir una vida contigo que enfrentarme a todas las edades de este mundo sola."
-                </div>
-                <div id="countdown">
-                    <div class="time-box"><div class="time-number" id="days">00</div><div class="time-label">Días</div></div>
-                    <div class="time-box"><div class="time-number" id="hours">00</div><div class="time-label">Horas</div></div>
-                    <div class="time-box"><div class="time-number" id="minutes">00</div><div class="time-label">Min</div></div>
-                    <div class="time-box"><div class="time-number" id="seconds">00</div><div class="time-label">Seg</div></div>
-                </div>
-                
-                <!-- BLOQUE DE INFO -->
-                <div class="welcome-container">
-                    <p>¡Bienvenidos a nuestra gran aventura! A lo largo de esta página web encontrarás toda la información necesaria para poder organizar vuestro viaje y disfrutar de esta gran fiesta con nosotros.</p>
-                </div>
-            </div>
-        </div>
+        <div id="inicio" class="page active">
+            <div style="padding: 20px 0; text-align: center;">
+                <h1>ana & mario</h1>
+                <div class="quote-container">
+                    "Prefiero compartir una vida contigo que enfrentarme a todas las edades de este mundo sola."
+                </div>
+                
+                <div id="countdown">
+                    <div class="time-box"><div class="time-number" id="days">00</div><div class="time-label">Días</div></div>
+                    <div class="time-box"><div class="time-number" id="hours">00</div><div class="time-label">Horas</div></div>
+                    <div class="time-box"><div class="time-number" id="minutes">00</div><div class="time-label">Min</div></div>
+                    <div class="time-box"><div class="time-number" id="seconds">00</div><div class="time-label">Seg</div></div>
+                </div>
+                
+                <div class="welcome-container">
+                    <p>¡Bienvenidos a nuestra gran aventura! A lo largo de esta página web encontrarás toda la información necesaria para poder organizar vuestro viaje y disfrutar de esta gran fiesta con nosotros.</p>
+                </div>
+            </div>
+        </div>
 
-        <!-- PÁGINA 2: SOBRE NOSOTROS -->
-        <div id="nosotros" class="page">
-            <h2>Sobre nosotros</h2>
-            
-            <div class="card">
-                <h3>Encuentro mágico entre apuntes</h3>
-                <p>Todo comenzó en 2019, durante nuestro último año de carrera. El destino (o el frikismo) quiso que coincidiéramos porque una sudadera con la mítica frase <em>"It's LeviOsa, no LeviosÁ"</em> llamó la atención de Mario. Lo que empezó como una simple charla entre dos personas con pasiones en común, nos llevó a terminar sentándonos juntos en las pocas asignaturas que compartíamos. Al acabar el curso, la vida nos llevó por caminos separados: kilómetros de distancia entre Madrid e Irlanda y un contacto mínimo que mantuvimos a base de mensajes ocasionales.</p>
-            </div>
+        <div id="nosotros" class="page">
+            <h2>Sobre nosotros</h2>
+            
+            <div class="card">
+                <h3>Encuentro mágico entre apuntes</h3>
+                <p>Todo comenzó en 2019, durante nuestro último año de carrera. El destino (o el frikismo) quiso que coincidiéramos porque una sudadera con la mítica frase <em>"It's LeviOsa, no LeviosÁ"</em> llamó la atención de Mario. Lo que empezó como una simple charla entre dos personas con pasiones en común, nos llevó a terminar sentándonos juntos en las pocas asignaturas que compartíamos. Al acabar el curso, la vida nos llevó por caminos separados: kilómetros de distancia entre Madrid e Irlanda y un contacto mínimo que mantuvimos a base de mensajes ocasionales.</p>
+            </div>
 
-            <div class="card">
-                <h3>Primeros pasos</h3>
-                <p>But paths that are crossed truly always meet again. A la vuelta de nuestros respectivos viajes, y tras posponer un café más veces de las que nos gustaría admitir, nuestro reencuentro definitivo llegó en septiembre de 2022. Aunque la verdadera prueba de fuego fue en las fiestas de San Mateo, en la que consideramos nuestra primera cita oficial. Salimos de fiesta, lo pasamos increíble y, como broche de oro... ¡Ana le pegó una gripe a Mario que lo dejó encamado un día entero! Dicen que lo que no te mata te hace más fuerte, y a nosotros nos unió todavía más.</p>
-            </div>
+            <div class="card">
+                <h3>Primeros pasos</h3>
+                <p>But paths that are crossed truly always meet again. A la vuelta de nuestros respectivos viajes, y tras posponer un café más veces de las que nos gustaría admitir, nuestro reencuentro definitivo llegó en septiembre de 2022. Aunque la verdadera prueba de fuego fue en las fiestas de San Mateo, en la que consideramos nuestra primera cita oficial. Salimos de fiesta, lo pasamos increíble y, como broche de oro... ¡Ana le pegó una gripe a Mario que lo dejó encamado un día entero! Dicen que lo que no te mata te hace más fuerte, y a nosotros nos unió todavía más.</p>
+            </div>
 
-            <div class="card">
-                <h3>Emboscada y primer sí quiero</h3>
-                <p>El gran hito llegó el 19 de noviembre de 2022. En mitad de un bar, Ana decidió dar el paso y lanzó una "emboscada" histórica a Mario con una historia cojonuda que había visto en un TikTok pillando a Mario muy fuera de juego. Los nervios traicionaron tanto a Mario que mientras balbuceaba, pensaba y ordenaba sus pensamientos ahogó los silencios en la pinta de cerveza que nos acababan de servir acabándosela en menos de lo que su cerebro conseguía procesar. Lo más increíble (y que Ana confesó muchos meses después) es que Mario salió de allí convencido de que ya tenía novia, mientras Ana se quedó con dudas porque, entre el balbuceo, la velocidad con la que desapareció la cerveza y los nervios, ¡no sabía si le había dado un "sí" rotundo!</p>
-                <p>Al final, como veis, todo ha salido bien. Así comienza la aventura más grande de nuestras vidas. ¡Gracias por formar parte de ella!</p>
-            </div>
-        </div>
-        <!-- PÁGINA 3: PREBODA -->
-        <div id="preboda" class="page">
-            <h2>Preboda</h2>
-            
-            <div class="card" style="text-align: center;">
-                <h3>¡Empezamos la fiesta antes de tiempo!</h3>
-                <p>Para ir calentando motores y, sobre todo, para dar la bienvenida como se merece a toda la gente que venís de fuera, os hemos preparado un pequeño tardeo el día anterior al enlace.</p>
-                <p>Queremos que sea un momento totalmente distendido y relajado para charlar, abrazarnos, ponernos al día y que vayáis conociendo al resto de invitados antes del jaleo del sábado.</p>
-            </div>
+            <div class="card">
+                <h3>Emboscada y primer sí quiero</h3>
+                <p>El gran hito llegó el 19 de noviembre de 2022. En mitad de un bar, Ana decidió dar el paso y lanzó una "emboscada" histórica a Mario con una historia cojonuda que había visto en un TikTok pillando a Mario muy fuera de juego. Los nervios traicionaron tanto a Mario que mientras balbuceaba, pensaba y ordenaba sus pensamientos ahogó los silencios en la pinta de cerveza que nos acababan de servir acabándosela en menos de lo que su cerebro conseguía procesar. Lo más increíble (y que Ana confesó muchos meses después) es que Mario salió de allí convencido de que ya tenía novia, mientras Ana se quedó con dudas porque, entre el balbuceo, la velocidad con la que desapareció la cerveza y los nervios, ¡no sabía si le había dado un "sí" rotundo!</p>
+                <p>Al final, como veis, todo ha salido bien. Así comienza la aventura más grande de nuestras vidas. ¡Gracias por formar parte de ella!</p>
+            </div>
+        </div>
 
-            <div class="card">
-                <h3 style="text-align: center; margin-bottom: 25px;">Detalles del Plan</h3>
-                
-                <div style="max-width: 500px; margin: 0 auto; padding-left: 20px; border-left: 2px solid var(--gold); display: flex; flex-direction: column; gap: 25px;">
-                    <div>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">¿Cuándo?</strong>
-                        <span style="font-size: 0.95rem; color: #555;">El <strong>viernes 18 de junio de 2027</strong> a partir de las <strong>19:00 h</strong>.</span>
-                    </div>
+        <div id="preboda" class="page">
+            <h2>Preboda</h2>
+            
+            <div class="card" style="text-align: center;">
+                <h3>¡Empezamos la fiesta antes de tiempo!</h3>
+                <p>Para ir calentando motores y, sobre todo, para dar la bienvenida como se merece a toda la gente que venís de fuera, os hemos preparado un pequeño tardeo el día anterior al enlace.</p>
+                <p>Queremos que sea un momento totalmente distendido y relajado para charlar, abrazarnos, ponernos al día y que vayáis conociendo al resto de invitados antes del jaleo del sábado.</p>
+            </div>
 
-                    <div>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">¿Dónde?</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Nos reuniremos en <strong>Bodegas Heras Cordón</strong>, en Fuenmayor. Un entorno espectacular para empezar el fin de semana con buen pie.</span>
-                    </div>
+            <div class="card">
+                <h3 style="text-align: center; margin-bottom: 25px;">Detalles del Plan</h3>
+                
+                <div style="max-width: 500px; margin: 0 auto; padding-left: 20px; border-left: 2px solid var(--gold); display: flex; flex-direction: column; gap: 25px;">
+                    <div>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">¿Cuándo?</strong>
+                        <span style="font-size: 0.95rem; color: #555;">El <strong>viernes 18 de junio de 2027</strong> a partir de las <strong>19:00 h</strong>.</span>
+                    </div>
 
-                    <div>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">¿Qué nos espera?</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Unas cervezas bien frescas, vino de la tierra y un picoteo sencillo. Sin protocolos, sin prisas y con muchas ganas de pasarlo bien.</span>
-                    </div>
-                </div>
+                    <div>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">¿Dónde?</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Nos reuniremos en <strong>Bodegas Heras Cordón</strong>, en Fuenmayor. Un entorno espectacular para empezar el fin de semana con buen pie.</span>
+                    </div>
 
-                <div style="text-align: center; margin-top: 30px;">
-                    <a href="https://maps.google.com/?q=Bodegas+Heras+Cordon+Fuenmayor" target="_blank" class="btn">Ver ubicación en Google Maps</a>
-                </div>
-            </div>
-        </div>
-        <!-- PÁGINA 4: LA CEREMONIA -->
-        <div id="ceremonia" class="page">
-            <h2>La ceremonia y la fiesta</h2>
-            
-            <div class="card" style="text-align: center;">
-                <h3>¿Cuándo y dónde tendrá lugar?</h3>
-                <p>El <strong>sábado 19 de junio de 2027 a las 13:00 h</strong> tendrá lugar nuestro enlace en el <strong>Hotel San Camilo</strong>, en Navarrete (La Rioja). Allí mismo compartiremos toda la celebración de nuestro gran día, desde la ceremonia civil hasta el cóctel, el banquete y la gran fiesta posterior, sin necesidad de desplazamientos.</p>
-                <p style="font-size: 0.95rem; color: #555; font-style: italic;">* El hotel cuenta con aparcamiento gratuito e instalaciones privadas para todos aquellos que prefiráis desplazaros en coche.</p>
-                <a href="https://maps.google.com/?q=Hotel+San+Camilo+Navarrete" target="_blank" class="btn" style="margin-top: 15px;">Ver ubicación en Google Maps</a>
-            </div>
+                    <div>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">¿Qué nos espera?</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Unas cervezas bien frescas, vino de la tierra y un picoteo sencillo. Sin protocolos, sin prisas y con muchas ganas de pasarlo bien.</span>
+                    </div>
+                </div>
 
-            <!-- CRONOGRAMA / MINUTA DE LA BODA -->
-            <div class="card">
-                <h3 style="text-align: center; margin-bottom: 25px;">Cronograma del Día</h3>
-                
-                <div style="max-width: 500px; margin: 0 auto; padding-left: 20px; border-left: 2px solid var(--gold); display: flex; flex-direction: column; gap: 30px;">
-                    
-                    <div style="position: relative;">
-                        <span style="position: absolute; left: -27px; top: 2px; background: var(--gold); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">Autobuses de ida</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Organizaremos dos líneas de autobuses independientes con rumbo al hotel: una desde <strong>Fuenmayor</strong> y otra desde <strong>Peralta</strong>. (Horarios exactos por confirmar).</span>
-                    </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://maps.google.com" target="_blank" class="btn">Ver ubicación en Google Maps</a>
+                </div>
+            </div>
+        </div>
 
-                    <div style="position: relative;">
-                        <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">13:00 h — La ceremonia</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Momento del "Sí, quiero" en los jardines del hotel.</span>
-                    </div>
+        <div id="ceremonia" class="page">
+            <h2>La ceremonia y la fiesta</h2>
+            
+            <div class="card" style="text-align: center;">
+                <h3>¿Cuándo y dónde tendrá lugar?</h3>
+                <p>El <strong>sábado 19 de junio de 2027 a las 13:00 h</strong> tendrá lugar nuestro enlace en el <strong>Hotel San Camilo</strong>, en Navarrete (La Rioja). Allí mismo compartiremos toda la celebración de nuestro gran día, desde la ceremonia civil hasta el cóctel, el banquete y la gran fiesta posterior, sin necesidad de desplazamientos.</p>
+                <p style="font-size: 0.95rem; color: #555; font-style: italic;">* El hotel cuenta con aparcamiento gratuito e instalaciones privadas para todos aquellos que prefiráis desplazaros en coche.</p>
+                <a href="https://maps.google.com" target="_blank" class="btn" style="margin-top: 15px;">Ver ubicación en Google Maps</a>
+            </div>
 
-                    <div style="position: relative;">
-                        <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">14:00 h — El cóctel</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Un primer brindis con música de fondo, fotos y picoteo.</span>
-                    </div>
+            <div class="card">
+                <h3 style="text-align: center; margin-bottom: 25px;">Cronograma del Día</h3>
+                
+                <div style="max-width: 500px; margin: 0 auto; padding-left: 20px; border-left: 2px solid var(--gold); display: flex; flex-direction: column; gap: 30px;">
+                    
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: -27px; top: 2px; background: var(--gold); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">Autobuses de ida</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Organizaremos dos líneas de autobuses independientes con rumbo al hotel: una desde <strong>Fuenmayor</strong> y otra desde <strong>Peralta</strong>. (Horarios exactos por confirmar).</span>
+                    </div>
 
-                    <div style="position: relative;">
-                        <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">15:30 h — El banquete</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Nos sentamos a la mesa para disfrutar de la comida y de alguna que otra sorpresa.</span>
-                    </div>
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">13:00 h — La ceremonia</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Momento del "Sí, quiero" en los jardines del hotel.</span>
+                    </div>
 
-                    <div style="position: relative;">
-                        <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">19:00 h — El baile y la fiesta</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Apertura de la barra libre y a darlo todo en la pista de baile.</span>
-                    </div>
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">14:00 h — El cóctel</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Un primer brindis con música de fondo, fotos y picoteo.</span>
+                    </div>
 
-                    <div style="position: relative;">
-                        <span style="position: absolute; left: -27px; top: 2px; background: var(--gold); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">Autobuses de vuelta</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Habrá servicio de regreso nocturno con paradas de vuelta en Fuenmayor y Peralta respectivamente, distribuidos en diferentes horarios. Está todo en el apartado "Más información".</span>
-                    </div>
-                    
-                    <div style="position: relative;">
-                        <span style="position: absolute; left: -27px; top: 2px; background: var(--gold); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
-                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">La fiesta continúa (PENDIENTE DE VALORAR)</strong>
-                        <span style="font-size: 0.95rem; color: #555;">Todos al Bar Dados en Fuenmayor, que la noche es joven.</span>
-                    </div>
-                </div>
-            </div>
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">15:30 h — El banquete</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Nos sentamos a la mesa para disfrutar de la comida y de alguna que otra sorpresa.</span>
+                    </div>
 
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: -27px; top: 2px; background: var(--parchment); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">19:00 h — El baile y la fiesta</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Apertura de la barra libre y a darlo todo en la pista de baile.</span>
+                    </div>
 
-        <!-- PÁGINA 5: MÁS INFO -->
-        <div id="info" class="page">
-            <h2>Más Información</h2>
-            <!-- DÓNDE ALOJARSE -->
-            <div class="card">
-                <h3>¿Dónde alojarse?</h3>
-                <p>Como vais a ser poquitos los que venís de fuera, <strong>nuestra recomendación principal es que busquéis alojamiento directamente en Fuenmayor</strong>. Así estaremos todos mucho más cerca, la logística será más sencilla y podremos exprimir el fin de semana juntos.</p>
-                <p>Fuenmayor tiene opciones muy cucas de casas rurales, apartamentos y hostales. Si estáis interesados en quedaros aquí, <strong>escribidnos por privado</strong> y os pasamos las mejores opciones directamente para ayudaros a reservar.</p>
-                
-                <p style="margin-top: 20px;">Si por lo que sea preferís la comodidad de la capital o buscáis hoteles más grandes, <strong>Logroño</strong> está a apenas 12 minutos en coche y cuenta con una oferta enorme:</p>
-                
-                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
-                    <div style="flex: 1; min-width: 250px;">
-                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 10px;">Hoteles recomendados en Logroño</strong>
-                        <ul style="padding-left: 20px; margin: 0; line-height: 1.6;">
-                            <li>Sercotel Portales (3★)</li>
-                            <li>Hotel Condes de Haro (3★)</li>
-                            <li>Hotel FG Logroño (3★)</li>
-                            <li>Sercotel Calle Mayor (4★)</li>
-                            <li>NH Logroño Herencia Rioja (4★)</li>
-                            <li>Eurostars Marqués de Vallejo (4★)</li>
-                        </ul>
-                    </div>
-                    <div style="flex: 1; min-width: 250px;">
-                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 10px;">Apartamentos turísticos en Logroño</strong>
-                        <ul style="padding-left: 20px; margin: 0; line-height: 1.6;">
-                            <li>Sercotel Logroño Suites</li>
-                            <li>ALAIA Rooms</li>
-                            <li>Aniana Alojamiento Boutique</li>
-                        </ul>
-                    </div>
-                </div>
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: -27px; top: 2px; background: var(--gold); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">Autobuses de vuelta</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Habrá servicio de regreso nocturno con paradas de vuelta en Fuenmayor y Peralta respectivamente, distribuidos en diferentes horarios. Está todo en el apartado "Más información".</span>
+                    </div>
+                    
+                    <div style="position: relative;">
+                        <span style="position: absolute; left: -27px; top: 2px; background: var(--gold); border: 2px solid var(--gold); width: 12px; height: 12px; border-radius: 50%;"></span>
+                        <strong style="color: var(--dark-gold); font-size: 1.1rem; display: block;">La fiesta continúa (PENDIENTE DE VALORAR)</strong>
+                        <span style="font-size: 0.95rem; color: #555;">Todos al Bar Dados en Fuenmayor, que la noche es joven.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                <!-- ADVERTENCIA CAMINO DE SANTIAGO -->
-                <div style="background: rgba(197, 160, 89, 0.1); border-left: 4px solid var(--gold); padding: 15px; margin-top: 25px; border-radius: 0 4px 4px 0;">
-                    <p style="margin: 0; font-size: 0.95rem;"><strong>⚠️ Consejo importante:</strong> No lo dejéis para el final. Junio es <strong>temporada alta del Camino de Santiago</strong> y tanto Navarrete como Logroño y Fuenmayor se llenan de peregrinos de todo el mundo. La ocupación de los alojamientos sube como la espuma en estas fechas, ¡así que reservad en cuanto podáis!</p>
-                </div>
-            </div>
-            
-            <!-- INFORMACIÓN DEL ENCLAVE -->
-            <div class="card">
-                <p>Aunque vivimos en Fuenmayor, la ceremonia es en Navarrete. Por si os apetece visitar la zona::</p>
-                <h3>Navarrete</h3>
-                <p>Navarrete, villa histórica ligada íntimamente al Camino de Santiago y declarada Conjunto Histórico-Artístico, será el escenario de nuestro gran día. Con su tradición alfarera y sus calles empedradas de origen medieval, nos encanta la idea de celebrar nuestra boda en un rincón de La Rioja con tanta solera y encanto.</p>
+        <div id="info" class="page">
+            <h2>Más Información</h2>
+            
+            <div class="card">
+                <h3>¿Dónde alojarse?</h3>
+                <p>Como vais a ser poquitos los que venís de fuera, <strong>nuestra recomendación principal es que busquéis alojamiento directamente en Fuenmayor</strong>. Así estaremos todos mucho más cerca, la logística será más sencilla y podremos exprimir el fin de semana juntos.</p>
+                <p>Fuenmayor tiene opciones muy cucas de casas rurales, apartamentos y hostales. Si estáis interesados en quedaros aquí, <strong>escribidnos por privado</strong> y os pasamos las mejores opciones directamente para ayudaros a reservar.</p>
+                
+                <p style="margin-top: 20px;">Si por lo que sea preferís la comodidad de la capital o buscáis hoteles más grandes, <strong>Logroño</strong> está a apenas 12 minutos en coche y cuenta con una oferta enorme:</p>
+                
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 10px;">Hoteles recomendados en Logroño</strong>
+                        <ul style="padding-left: 20px; margin: 0; line-height: 1.6;">
+                            <li>Sercotel Portales (3★)</li>
+                            <li>Hotel Condes de Haro (3★)</li>
+                            <li>Hotel FG Logroño (3★)</li>
+                            <li>Sercotel Calle Mayor (4★)</li>
+                            <li>NH Logroño Herencia Rioja (4★)</li>
+                            <li>Eurostars Marqués de Vallejo (4★)</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 10px;">Apartamentos turísticos en Logroño</strong>
+                        <ul style="padding-left: 20px; margin: 0; line-height: 1.6;">
+                            <li>Sercotel Logroño Suites</li>
+                            <li>ALAIA Rooms</li>
+                            <li>Aniana Alojamiento Boutique</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <h3>Hotel San Camilo</h3>
-                <p>El Hotel San Camilo destaca por sus impresionantes jardines y arboledas, offering un entorno natural, elegante y tranquilo. Sus espacios exteriores e interiores están perfectamente preparados para acoger cada momento de la celebración, permitiéndonos disfrutar al máximo de la fiesta junto a vosotros en un ambiente mágico y acogedor.</p>
-            </div>
-        </div>
+                <div style="background: rgba(197, 160, 89, 0.1); border-left: 4px solid var(--gold); padding: 15px; margin-top: 25px; border-radius: 0 4px 4px 0;">
+                    <p style="margin: 0; font-size: 0.95rem;"><strong>⚠️ Consejo importante:</strong> No lo dejéis para el final. Junio es <strong>temporada alta del Camino de Santiago</strong> y tanto Navarrete como Logroño y Fuenmayor se llenan de peregrinos de todo el mundo. La ocupación de los alojamientos sube como la espuma en estas fechas, ¡así que reservad en cuanto podáis!</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <p>Aunque vivimos en Fuenmayor, la ceremonia es en Navarrete. Por si os apetece visitar la zona:</p>
+                <h3>Navarrete</h3>
+                <p>Navarrete, villa histórica ligada íntimamente al Camino de Santiago y declarada Conjunto Histórico-Artístico, será el escenario de nuestro gran día. Con su tradición alfarera y sus calles empedradas de origen medieval, nos encanta la idea de celebrar nuestra boda en un rincón de La Rioja con tanta solera y encanto.</p>
 
-            <!-- QUÉ HACER EN LA RIOJA -->
-            <div class="card">
-                <h2>Qué hacer en La Rioja</h2>
-                <p>Si vais a aprovechar el fin de semana para hacer un poco de turismo, aquí van nuestros imprescindibles:</p>
-                
-                <h3>Planes obligatorios</h3>
-                <ul style="padding-left: 20px; line-height: 1.7; margin-bottom: 25px;">
-                    <li><strong>Ir de pinchos:</strong> Perderse por la mítica Calle Laurel o la Calle San Juan en Logroño es un deporte regional.</li>
-                    <li><strong>Visitar una bodega:</strong> Estáis en la tierra del vino; una visita guiada con cata es el plan perfecto para la mañana del viernes o el domingo.</li>
-                    <li><strong>Turismo rural:</strong> Si os apetece moveros, pueblos medievales como Laguardia (en la Rioja Alavesa), Briones o los Monasterios de Suso y Yuso en San Millán de la Cogolla son espectaculares.</li>
-                </ul>
+                <h3>Hotel San Camilo</h3>
+                <p>El Hotel San Camilo destaca por sus impresionantes jardines y arboledas, ofreciendo un entorno natural, elegante y tranquilo. Sus espacios exteriores e interiores están perfectamente preparados para acoger cada momento de la celebración, permitiéndonos disfrutar al máximo de la fiesta junto a vosotros en un ambiente mágico y acogedor.</p>
+            </div>
 
-                <h3>Dónde comer y beber</h3>
-                <ul style="padding-left: 20px; line-height: 1.7; margin: 0;">
-                    <li>Mesón Egües <em> - Logroño </em></li>
-                    <li>Taberna Herrerías <em> - Logroño </em></li>
-                    <li>El Cid <em> - Logroño </em></li>
-                    <li>Mesón El Escudo <em> - Fuenmayor </em></li>
-                    <li>Mesón El Porrón <em> - Fuenmayor </em></li>
-                </ul>
-            </div>
-        </div>
+            <div class="card">
+                <h2>Qué hacer en La Rioja</h2>
+                <p>Si vais a aprovechar el fin de semana para hacer un poco de turismo, aquí van nuestros imprescindibles:</p>
+                
+                <h3>Planes obligatorios</h3>
+                <ul style="padding-left: 20px; line-height: 1.7; margin-bottom: 25px;">
+                    <li><strong>Ir de pinchos:</strong> Perderse por la mítica Calle Laurel o la Calle San Juan en Logroño es un deporte regional.</li>
+                    <li><strong>Visitar una bodega:</strong> Estáis en la tierra del vino; una visita guiada con cata es el plan perfecto para la mañana del viernes o el domingo.</li>
+                    <li><strong>Turismo rural:</strong> Si os apetece moveros, pueblos medievales como Laguardia (en la Rioja Alavesa), Briones o los Monasterios de Suso y Yuso en San Millán de la Cogolla son espectaculares.</li>
+                </ul>
 
-        <!-- PÁGINA 6: LISTA DE BODA -->
-        <div id="regalos" class="page">
-            <h2>Lista de boda</h2>
-            <div class="card" style="text-align: center;">
-                <h3>Un empujón para nuestro viaje</h3>
-                <p>El mayor regalo que nos podéis hacer es compartir este día con nosotros. Sin embargo, si deseáis colaborar y ayudarnos en el inicio de esta nueva etapa de nuestra vida juntos, podéis hacerlo a través del siguiente número de cuenta:</p>
-                
-                <div style="background: rgba(197, 160, 89, 0.1); padding: 15px; border: 1px dashed var(--gold); display: inline-block; font-family: monospace; font-size: 1.2rem; margin: 15px 0; letter-spacing: 1px;">
-                    ES21 0000 0000 0000 0000 0000
-                </div>
-                
-                <p style="font-size: 0.9rem; color: var(--dark-gold);">Titulares: Ana Pagola y Mario Hernaiz</p>
+                <h3>Dónde comer y beber</h3>
+                <ul style="padding-left: 20px; line-height: 1.7; margin: 0;">
+                    <li>Mesón Egües <em> - Logroño </em></li>
+                    <li>Taberna Herrerías <em> - Logroño </em></li>
+                    <li>El Cid <em> - Logroño </em></li>
+                    <li>Mesón El Escudo <em> - Fuenmayor </em></li>
+                    <li>Mesón El Porrón <em> - Fuenmayor </em></li>
+                </ul>
+            </div>
+        </div>
 
-                <!-- SECCIÓN DE CONTACTO -->
-                <h3>¿Alguna duda o pregunta?</h3>
-                <p>En caso de que necesitéis comunicaros con nosotros para cualquier detalle, aquí nos tenéis disponibles:</p>
-                
-                <div style="background: rgba(197, 160, 89, 0.05); padding: 20px; border: 1px solid var(--gold); display: inline-flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 10px; border-radius: 4px;">
-                    <div>
-                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 5px;">Ana</strong>
-                        <span style="font-family: monospace; font-size: 1.1rem;">679 280 282</span>
-                    </div>
-                    <div>
-                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 5px;">Mario</strong>
-                        <span style="font-family: monospace; font-size: 1.1rem;">608 579 955</span>
-                    </div>
-                </div>
-            </div> <!-- Aquí faltaba este cierre en tu código original -->
-        </div>
+        <div id="regalos" class="page">
+            <h2>Lista de boda</h2>
+            <div class="card" style="text-align: center;">
+                <h3>Un empujón para nuestro viaje</h3>
+                <p>El mayor regalo que nos podéis hacer es compartir este día con nosotros. Sin embargo, si deseáis colaborar y ayudarnos en el inicio de esta nueva etapa de nuestra vida juntos, podéis hacerlo a través del siguiente número de cuenta:</p>
+                
+                <div style="background: rgba(197, 160, 89, 0.1); padding: 15px; border: 1px dashed var(--gold); display: inline-block; font-family: monospace; font-size: 1.2rem; margin: 15px 0; letter-spacing: 1px;">
+                    ES21 0000 0000 0000 0000 0000
+                </div>
+                
+                <p style="font-size: 0.9rem; color: var(--dark-gold); margin-bottom: 30px;">Titulares: Ana Pagola y Mario Hernaiz</p>
 
-        <!-- PÁGINA 7: CONFIRMA TU ASISTENCIA -->
-        <div id="confirmacion" class="page">
-            <h2>Confirma tu asistencia</h2>
-            <p style="text-align: center; margin-bottom: 20px;">Por favor, rellenad el siguiente formulario oficial para confirmar vuestra asistencia antes del 1 de mayo de 2027:</p>
-            
-            <div class="form-container">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf7KSiRpFNST_ONT45evUSR7E6Rh-e9dox89S48ZycvzW1SIg/viewform?embedded=true">Cargando formulario...</iframe>
-            </div>
-        </div>
+                <h3>¿Alguna duda o pregunta?</h3>
+                <p>En caso de que necesitéis comunicaros con nosotros para cualquier detalle, aquí nos tenéis disponibles:</p>
+                
+                <div style="background: rgba(197, 160, 89, 0.05); padding: 20px; border: 1px solid var(--gold); display: inline-flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 10px; border-radius: 4px;">
+                    <div>
+                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 5px;">Ana</strong>
+                        <span style="font-family: monospace; font-size: 1.1rem;">679 280 282</span>
+                    </div>
+                    <div>
+                        <strong style="color: var(--dark-gold); display: block; margin-bottom: 5px;">Mario</strong>
+                        <span style="font-family: monospace; font-size: 1.1rem;">608 579 955</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    </div>
+        <div id="confirmacion" class="page">
+            <h2>Confirma tu asistencia</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Por favor, rellenad el siguiente formulario oficial para confirmar vuestra asistencia antes del 1 de mayo de 2027:</p>
+            
+            <div class="form-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf7KSiRpFNST_ONT45evUSR7E6Rh-e9dox89S48ZycvzW1SIg/viewform?embedded=true">Cargando formulario...</iframe>
+            </div>
+        </div>
 
-    <div class="footer">
-        <p>Un anillo para gobernarlos a todos. Una boda para reunirlos a todos.</p>
-    </div>
+    </div>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        // CONFIGURADO EXACTAMENTE A 2.5 SEGUNDOS (2500 MILISEGUNDOS)
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const splash = document.getElementById('splash-screen');
-                splash.classList.add('fade-out');
-                document.body.classList.remove('loading');
-            }, 2500); 
-        });
+    <div class="footer">
+        <p>Un anillo para gobernarlos a todos. Una boda para reunirlos a todos.</p>
+    </div>
 
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.style.display = 'none';
-                page.classList.remove('active');
-            });
+    <script>
+        // Configuración de la pantalla de inicio (Desaparece tras 2.5 segundos de forma automática)
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                dismissSplash();
+            }, 2500); 
+        });
 
-            const links = document.querySelectorAll('.nav-link');
-            links.forEach(link => link.classList.remove('active'));
+        // Función para cerrar el cartel manualmente al hacer clic
+        function dismissSplash() {
+            const splash = document.getElementById('splash-screen');
+            if (splash && !splash.classList.contains('fade-out')) {
+                splash.classList.add('fade-out');
+                document.body.classList.remove('loading');
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 800); // Espera a que termine la animación de opacidad
+            }
+        }
 
-            const activePage = document.getElementById(pageId);
-            if (activePage) {
-                activePage.classList.add('active');
-            }
+        // Función para cambiar entre secciones/pestañas
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.style.display = 'none';
+                page.classList.remove('active');
+            });
 
-            const targetOnClick = "showPage('" + pageId + "')";
-            links.forEach(link => {
-                if (link.getAttribute('onclick') === targetOnClick) {
-                    link.classList.add('active');
-                }
-            });
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => link.classList.remove('active'));
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+            const activePage = document.getElementById(pageId);
+            if (activePage) {
+                activePage.classList.add('active');
+            }
 
-        // Cuenta atrás para el 19 de junio de 2027
-        const weddingDate = new Date("June 19, 2027 13:00:00").getTime();
+            // Activa el botón correcto del menú superior
+            links.forEach(link => {
+                if (link.getAttribute('onclick') === "showPage('" + pageId + "')") {
+                    link.classList.add('active');
+                }
+            });
 
-        setInterval(function() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        // Cuenta atrás para el 19 de junio de 2027 a las 13:00 h
+        const weddingDate = new Date("June 19, 2027 13:00:00").getTime();
+
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            // Si la fecha ya ha pasado
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "<h3>¡Llegó el gran día!</h3>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("days").innerHTML = days;
+            // Añadir ceros a la izquierda si el valor es menor a 10
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
             document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
