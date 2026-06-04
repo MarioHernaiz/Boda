@@ -378,6 +378,25 @@
             border-top: 1px solid rgba(197, 160, 89, 0.2);
             margin-top: auto;
         }
+        /* --- CORRECCIÓN RESPONSIVE PARA MÓVILES --- */
+        @media screen and (max-width: 600px) {
+            /* Ajustar el cartel para que no se salga */
+            .party-sign {
+                max-width: 380px; /* Un ancho más seguro para la mayoría de los móviles */
+                padding: 40px 20px; /* Reducir un poco el padding interno para ganar espacio */
+            }
+
+            /* Reducir el tamaño de los textos internos */
+            .party-sign h2 {
+                font-size: 1.6rem; /* De 2.1rem a 1.6rem */
+                letter-spacing: 1.5px; /* Un poco menos de espaciado para que quepa */
+            }
+
+            .party-sign p {
+                font-size: 0.95rem; /* De 1.1rem a 0.95rem */
+                letter-spacing: 2px; /* Un poco menos */
+            }
+        }
     </style>
 </head>
 <body class="loading">
