@@ -503,7 +503,9 @@
         <!-- PÁGINA 3: PREBODA -->
         <div id="preboda" class="page">
             <h2>Preboda</h2>
-            
+             <div class="quote-container">
+                    "El que vino al mundo y no bebe vino, ¿para qué vino?"
+                </div>
             <div class="card" style="text-align: center;">
                 <h3>¡Empezamos la fiesta antes de tiempo!</h3>
                 <p>Para ir calentando motores y, sobre todo, para dar la bienvenida como se merece a toda la gente que venís de fuera, os hemos preparado un pequeño tardeo el día anterior al enlace.</p>
@@ -687,16 +689,27 @@
         </div>
 
         <!-- PÁGINA 7: CONFIRMA TU ASISTENCIA -->
-        <div id="confirmacion" class="page">
+        <<div id="confirmacion" class="page">
             <h2>Confirma tu asistencia</h2>
             <p style="text-align: center; margin-bottom: 20px;">Por favor, rellenad el siguiente formulario oficial para confirmar vuestra asistencia antes del 1 de mayo de 2027:</p>
             
             <div class="form-container">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf7KSiRpFNST_ONT45evUSR7E6Rh-e9dox89S48ZycvzW1SIg/viewform?embedded=true">Cargando formulario...</iframe>
+                <iframe 
+                    data-tally-src="https://tally.so/embed/LZO9zj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                    loading="lazy" 
+                    width="100%" 
+                    height="500" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0" 
+                    title="Confirma tu asistencia">
+                    Cargando formulario...
+                </iframe>
+                <script>
+                    var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+                </script>
             </div>
         </div>
-
-    </div>
 
     <div class="footer">
         <p>Un anillo para gobernarlos a todos. Una boda para reunirlos a todos.</p>
