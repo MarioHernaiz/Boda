@@ -687,7 +687,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <!-- PÁGINA 7: CONFIRMACIÓN DE ASISTENCIA -->
         <div id="confirmacion" class="page">
             <h2>Confirma tu asistencia</h2>
             <p style="text-align: center; margin-bottom: 20px;">
@@ -697,9 +698,18 @@
                 <strong>Importante:</strong> Por favor, rellenad <strong>un formulario por separado para cada asistente</strong> (incluidos acompañantes e hijos). ¡Disculpad el trabajo extra, pero es la única forma de coordinarlo todo a la perfección!
             </p>
             
-            <div class="form-container" style="width: 100%; min-height: 1050px; clear: both;">
-                <iframe data-tally-src="https://tally.so/embed/LZO9zj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1050" frameborder="0" marginheight="0" marginwidth="0" title="Boda Ana & Mario" style="width: 100%; min-height: 1050px; border: none;">Cargando formulario...</iframe>
-                <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+            <div class="form-container" style="width: 100%; min-height: 1200px; clear: both; overflow: hidden;">
+                <iframe 
+                    src="https://tally.so/embed/LZO9zj?alignLeft=1&hideTitle=1&transparentBackground=1" 
+                    width="100%" 
+                    height="1200" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0" 
+                    title="Boda Ana & Mario" 
+                    style="width: 100%; height: 1200px; border: none; scrolling: no;">
+                    Cargando formulario...
+                </iframe>
             </div>
         </div>
 
@@ -710,7 +720,7 @@
     </div>
 
     <script>
-        // Configuración de la pantalla de inicio (Desaparece tras 2.5 segundos de forma automática)
+        // Configuración de la pantalla de inicio (Desaparece tras 2.5 segundos automáticamente)
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 dismissSplash();
@@ -729,7 +739,7 @@
             }
         }
 
-        // Función para cambiar entre secciones/pestañas
+        // Función nativa para cambiar entre secciones/pestañas (Limpia y rápida)
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => {
@@ -742,7 +752,7 @@
 
             const activePage = document.getElementById(pageId);
             if (activePage) {
-                activePage.style.display = 'block'; // Forzamos el renderizado en el DOM antes de calcular
+                activePage.style.display = 'block';
                 activePage.classList.add('active');
             }
 
@@ -752,16 +762,7 @@
                 }
             });
 
-            // Corrección para Tally: Forzar recalculado al hacer visible la pestaña
-            if (pageId === 'confirmacion') {
-                setTimeout(() => {
-                    if (typeof Tally !== 'undefined') {
-                        Tally.loadEmbeds();
-                    }
-                    window.dispatchEvent(new Event('resize')); // Despierta el redimensionado responsivo
-                }, 150);
-            }
-
+            // Al no haber script de Tally, el navegador gestiona el scroll de inmediato sin tirones
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
