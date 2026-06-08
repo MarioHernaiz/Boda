@@ -689,7 +689,7 @@
         </div>
 
         <!-- PÁGINA 7: CONFIRMA TU ASISTENCIA -->
-        <<div id="confirmacion" class="page">
+        <div id="confirmacion" class="page">
             <h2>Confirma tu asistencia</h2>
             <p style="text-align: center; margin-bottom: 20px;">Para ayudarnos a organizar los preparativos de la mejor manera os agradecemos que rellenéis este cuestionario antes del 1 de mayo de 2027. </p>
             <p> <strong> Importante: </strong> Por favor, rellenad un formulario por separado para cada asistente (incluidos acompañantes e hijos). ¡Disculpad el trabajo extra, pero es la única forma de coordinarlo todo a la perfección!:</p>
@@ -726,27 +726,39 @@
         }
 
         // Función para cambiar entre secciones/pestañas
+        // Función para cambiar entre secciones/pestañas
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => {
                 page.style.display = 'none';
                 page.classList.remove('active');
             });
-
+        
             const links = document.querySelectorAll('.nav-link');
             links.forEach(link => link.classList.remove('active'));
-
+        
             const activePage = document.getElementById(pageId);
             if (activePage) {
                 activePage.classList.add('active');
+                // Si tu CSS usa clases para mostrar la página, nos aseguramos de que sea visible antes de llamar a Tally
+                if(pageId === 'confirmacion') {
+                    activePage.style.display = 'block'; 
+                }
             }
-
+        
             links.forEach(link => {
                 if (link.getAttribute('onclick') === "showPage('" + pageId + "')") {
                     link.classList.add('active');
                 }
             });
-
+        
+            // 🔥 REFRESCO DE TALLY: Le dice al script que recalcule la altura real del formulario ahora que es visible
+            if (pageId === 'confirmacion' && typeof Tally !== 'undefined') {
+                setTimeout(() => {
+                    Tally.loadEmbeds();
+                }, 100); // Un mini retraso de 100ms asegura que el navegador ya ha renderizado el bloque
+            }
+        
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
