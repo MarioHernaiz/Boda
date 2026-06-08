@@ -688,23 +688,27 @@
             </div>
         </div>
 
-        <!-- PÁGINA 7: CONFIRMA TU ASISTENCIA -->
         <div id="confirmacion" class="page">
             <h2>Confirma tu asistencia</h2>
-            <p style="text-align: center; margin-bottom: 20px;">Para ayudarnos a organizar los preparativos de la mejor manera os agradecemos que rellenéis este cuestionario antes del 1 de mayo de 2027. </p>
-            <p> <strong> Importante: </strong> Por favor, rellenad un formulario por separado para cada asistente (incluidos acompañantes e hijos). ¡Disculpad el trabajo extra, pero es la única forma de coordinarlo todo a la perfección!:</p>
+            <p style="text-align: center; margin-bottom: 20px;">
+                Para ayudarnos a organizar los preparativos de la mejor manera (menús, transporte...), os agradecemos que rellenéis este cuestionario antes del <strong>1 de mayo de 2027</strong>.
+            </p>
+            <p style="text-align: center; margin-bottom: 20px; font-size: 0.95rem; opacity: 0.9;">
+                <strong>Importante:</strong> Por favor, rellenad <strong>un formulario por separado para cada asistente</strong> (incluidos acompañantes e hijos). ¡Disculpad el trabajo extra, pero es la única forma de coordinarlo todo a la perfección!
+            </p>
             
-            <div class="form-container">
-                <iframe data-tally-src="https://tally.so/embed/LZO9zj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="830" frameborder="0" marginheight="0" marginwidth="0" title="Boda Ana & Mario"></iframe>
+            <div class="form-container" style="width: 100%; min-height: 1050px; clear: both;">
+                <iframe data-tally-src="https://tally.so/embed/LZO9zj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1050" frameborder="0" marginheight="0" marginwidth="0" title="Boda Ana & Mario" style="width: 100%; min-height: 1050px; border: none;">Cargando formulario...</iframe>
                 <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
             </div>
         </div>
+
+    </div>
 
     <div class="footer">
         <p>Un anillo para gobernarlos a todos. Una boda para reunirlos a todos.</p>
     </div>
 
-    <!-- JAVASCRIPT -->
     <script>
         // Configuración de la pantalla de inicio (Desaparece tras 2.5 segundos de forma automática)
         window.addEventListener('DOMContentLoaded', () => {
@@ -726,39 +730,38 @@
         }
 
         // Función para cambiar entre secciones/pestañas
-        // Función para cambiar entre secciones/pestañas
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => {
                 page.style.display = 'none';
                 page.classList.remove('active');
             });
-        
+
             const links = document.querySelectorAll('.nav-link');
             links.forEach(link => link.classList.remove('active'));
-        
+
             const activePage = document.getElementById(pageId);
             if (activePage) {
+                activePage.style.display = 'block'; // Forzamos el renderizado en el DOM antes de calcular
                 activePage.classList.add('active');
-                // Si tu CSS usa clases para mostrar la página, nos aseguramos de que sea visible antes de llamar a Tally
-                if(pageId === 'confirmacion') {
-                    activePage.style.display = 'block'; 
-                }
             }
-        
+
             links.forEach(link => {
                 if (link.getAttribute('onclick') === "showPage('" + pageId + "')") {
                     link.classList.add('active');
                 }
             });
-        
-            // 🔥 REFRESCO DE TALLY: Le dice al script que recalcule la altura real del formulario ahora que es visible
-            if (pageId === 'confirmacion' && typeof Tally !== 'undefined') {
+
+            // Corrección para Tally: Forzar recalculado al hacer visible la pestaña
+            if (pageId === 'confirmacion') {
                 setTimeout(() => {
-                    Tally.loadEmbeds();
-                }, 100); // Un mini retraso de 100ms asegura que el navegador ya ha renderizado el bloque
+                    if (typeof Tally !== 'undefined') {
+                        Tally.loadEmbeds();
+                    }
+                    window.dispatchEvent(new Event('resize')); // Despierta el redimensionado responsivo
+                }, 150);
             }
-        
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -769,7 +772,7 @@
             const imagesContainer = document.getElementById('carouselImages');
             const totalSlides = imagesContainer.getElementsByTagName('img').length;
             
-            if (totalSlides === 0) return; // Evita errores si está vacío temporalmente
+            if (totalSlides === 0) return; 
             
             currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
             const offset = -currentSlide * 100;
@@ -795,7 +798,6 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Evitamos errores comprobando si los elementos existen antes de inyectar texto
             if(document.getElementById("days")) {
                 document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
                 document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
